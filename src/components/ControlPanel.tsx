@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ShieldCheck, ImagePlay, CalendarClock, Lock, Calculator, Rocket, PlayCircle, BookOpen, FileCheck, Snowflake } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+    ShieldCheck, ImagePlay, CalendarClock, Lock, Calculator, Rocket, PlayCircle, BookOpen, FileCheck, Snowflake,
+    Zap, FlaskConical
+} from 'lucide-react';
 
 declare global {
     interface Window {
@@ -30,7 +33,6 @@ const CountdownWidget: React.FC = () => {
 
     return (
         <div className="w-full p-2 bg-[#151b2e] border border-cyan-500/20 rounded-lg relative overflow-hidden group flex flex-col items-center justify-center shadow-lg mb-2">
-            {/* Dłuższy tekst w jednej linii - tracking-tighter pomaga zmieścić */}
             <p className="text-[9px] sm:text-[10px] text-cyan-200/70 text-center mb-1 uppercase tracking-tighter whitespace-nowrap font-mono w-full overflow-hidden text-ellipsis">
                 Do świątecznego paraliżu obsługi klienta zostało:
             </p>
@@ -59,7 +61,9 @@ const SnowEffect: React.FC = () => {
 };
 
 const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
-    const tiles = [
+    const navigate = useNavigate();
+
+    const mainTiles = [
         { id: 'security', icon: <Lock className="w-5 h-5 md:w-8 md:h-8 text-cyan-400" />, label: 'Bezpieczeństwo', subLabel: 'Biznesowe', payload: 'SHOW_SECURITY' },
         { id: 'conversion', icon: <CalendarClock className="w-5 h-5 md:w-8 md:h-8 text-cyan-400" />, label: 'Natychmiastowa', subLabel: 'Konwersja', payload: 'SHOW_CONVERSION' },
         { id: 'visuals', icon: <ImagePlay className="w-5 h-5 md:w-8 md:h-8 text-cyan-400" />, label: 'Wizualna', subLabel: 'Prezentacja', payload: 'SHOW_VISUALS' },
@@ -68,11 +72,65 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
         { id: 'demo', icon: <Rocket className="w-5 h-5 md:w-8 md:h-8 text-yellow-400" />, label: 'Zamów', subLabel: 'Demo', payload: 'SHOW_ORDER_DEMO', isGold: true }
     ];
 
+    const labTiles = [
+        {
+            id: 'oze-bot',
+            icon: <Zap className="w-5 h-5 md:w-8 md:h-8 text-yellow-400" />,
+            label: 'Ekspert OZE',
+            subLabel: 'Wirtualny Asystent',
+            action: 'NAVIGATE_OZE',
+            isGold: false
+        },
+        {
+            id: 'rnd-1',
+            icon: <FlaskConical className="w-5 h-5 md:w-8 md:h-8 text-slate-600" />,
+            label: 'R&D',
+            subLabel: 'Wkrótce...',
+            disabled: true
+        },
+        {
+            id: 'rnd-2',
+            icon: <FlaskConical className="w-5 h-5 md:w-8 md:h-8 text-slate-600" />,
+            label: 'R&D',
+            subLabel: 'Wkrótce...',
+            disabled: true
+        }
+    ];
+
     const materials = [
         { icon: <PlayCircle className="h-3 w-3" />, label: 'Wideo', path: 'https://youtu.be/FCmDm5Kvv8I', isExternal: true },
         { icon: <BookOpen className="h-3 w-3" />, label: 'Blueprint', path: '/wiedza#blueprint', isExternal: false },
         { icon: <FileCheck className="h-3 w-3" />, label: 'Checklist', path: '/wiedza#checklist', isExternal: false },
     ];
+
+    const handleTileClick = (tile: any, e: React.MouseEvent) => {
+        e.stopPropagation();
+
+        if (tile.disabled) return;
+
+        if (tile.action === 'NAVIGATE_OZE') {
+            navigate('/ekspert-oze');
+            return;
+        }
+
+        // Google Ads Conversion Tracking (Existing Logic)
+        const isDemoAction = tile.id === 'demo' || tile.payload === 'SHOW_ORDER_DEMO' || tile.label?.toLowerCase().includes('demo');
+
+        if (isDemoAction) {
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', 'conversion', {
+                    'send_to': 'AW-17786098127/uZw-CISjtc0bEM-jiaFC'
+                });
+                console.log('✅ Google Ads pixel fired');
+            } else {
+                console.warn('⚠️ Google Ads script not loaded');
+            }
+        }
+
+        if (tile.payload) {
+            onTrigger('VERITAS_TRIGGER', tile.payload);
+        }
+    };
 
     return (
         <div className="flex flex-col h-full w-full bg-[#0B1021] relative overflow-hidden pb-8 md:pb-0">
@@ -86,9 +144,9 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                 <CountdownWidget />
             </div>
 
-            {/* SEKCJA 2: Grid */}
+            {/* SEKCJA 2: Content (Scrollable) */}
             <div className="flex-1 min-h-0 relative z-10">
-                <div className="h-full w-full flex flex-row items-center gap-3 overflow-x-auto p-3 snap-x scrollbar-hide md:flex md:flex-col md:p-6 md:overflow-y-auto">
+                <div className="h-full w-full overflow-x-auto p-3 snap-x scrollbar-hide md:overflow-y-auto md:p-6 md:flex md:flex-col">
 
                     {/* --- DESKTOP ONLY: Świąteczna Promocja --- */}
                     <div className="hidden md:flex flex-col items-center justify-center bg-gradient-to-r from-blue-900/40 to-cyan-900/40 border border-cyan-500/30 p-3 rounded-xl mb-4 text-center shadow-[0_0_15px_rgba(34,211,238,0.1)] w-full flex-none">
@@ -113,33 +171,13 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                         </div>
                     </div>
 
-                    <div className="flex flex-row md:grid md:grid-cols-2 gap-3 md:gap-2 w-full">
-                        {tiles.map((tile) => (
+                    {/* --- MOBILE VIEW: SINGLE LIST --- */}
+                    <div className="flex flex-row md:hidden gap-3 w-max px-2">
+                        {[...mainTiles, labTiles[0]].map((tile) => (
                             <button
                                 key={tile.id}
-                                onClick={(e) => {
-                                    e.stopPropagation();
-
-                                    // Google Ads Conversion Tracking
-                                    // --- FIX: GOOGLE ADS TRACKING ---
-                                    // Sprawdzamy zarówno ID jak i Payload, żeby mieć 100% pewności
-                                    const isDemoAction = tile.id === 'demo' || tile.payload === 'SHOW_ORDER_DEMO' || tile.label?.toLowerCase().includes('demo');
-
-                                    if (isDemoAction) {
-                                        if (typeof window.gtag === 'function') {
-                                            window.gtag('event', 'conversion', {
-                                                'send_to': 'AW-17786098127/uZw-CISjtc0bEM-jiaFC'
-                                            });
-                                            console.log('✅ Google Ads pixel fired');
-                                        } else {
-                                            console.warn('⚠️ Google Ads script not loaded');
-                                        }
-                                    }
-                                    // --------------------------------
-
-                                    onTrigger('VERITAS_TRIGGER', tile.payload);
-                                }}
-                                className={`flex-none w-[140px] h-24 md:w-auto md:h-28 flex flex-col items-center justify-center text-center 
+                                onClick={(e) => handleTileClick(tile, e)}
+                                className={`flex-none w-[140px] h-24 flex flex-col items-center justify-center text-center 
                                 rounded-xl snap-center p-1 transition-all duration-300 relative overflow-hidden cursor-pointer group
                                 ${tile.isGold
                                         ? 'bg-[#151b2e] border border-yellow-500/60 shadow-[0_0_15px_rgba(234,179,8,0.2)]'
@@ -149,11 +187,66 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                             >
                                 <div className="mb-1 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">{tile.icon}</div>
                                 <div className="flex flex-col justify-center items-center">
-                                    <span className={`text-xs md:text-sm font-bold leading-tight ${tile.isGold ? 'text-yellow-100' : 'text-slate-100'}`}>{tile.label}</span>
-                                    <span className={`text-[10px] md:text-xs font-mono mt-0.5 font-medium block ${tile.isGold ? 'text-yellow-400' : 'text-cyan-400/80'}`}>{tile.subLabel}</span>
+                                    <span className={`text-xs font-bold leading-tight ${tile.isGold ? 'text-yellow-100' : 'text-slate-100'}`}>{tile.label}</span>
+                                    <span className={`text-[10px] font-mono mt-0.5 font-medium block ${tile.isGold ? 'text-yellow-400' : 'text-cyan-400/80'}`}>{tile.subLabel}</span>
                                 </div>
                             </button>
                         ))}
+                    </div>
+
+                    {/* --- DESKTOP VIEW: SEPARATED SECTIONS --- */}
+                    <div className="hidden md:flex flex-col gap-6 w-full">
+                        {/* Main Grid */}
+                        <div className="grid grid-cols-2 gap-2 w-full">
+                            {mainTiles.map((tile) => (
+                                <button
+                                    key={tile.id}
+                                    onClick={(e) => handleTileClick(tile, e)}
+                                    className={`flex-none h-28 flex flex-col items-center justify-center text-center 
+                                    rounded-xl transition-all duration-300 relative overflow-hidden cursor-pointer group
+                                    ${tile.isGold
+                                            ? 'bg-[#151b2e] border border-yellow-500/60 shadow-[0_0_15px_rgba(234,179,8,0.2)]'
+                                            : 'bg-[#151b2e] border border-white/5 hover:bg-[#1e293b] hover:border-cyan-500/30'
+                                        }
+                                `}
+                                >
+                                    <div className="mb-1 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">{tile.icon}</div>
+                                    <div className="flex flex-col justify-center items-center">
+                                        <span className={`text-sm font-bold leading-tight ${tile.isGold ? 'text-yellow-100' : 'text-slate-100'}`}>{tile.label}</span>
+                                        <span className={`text-xs font-mono mt-0.5 font-medium block ${tile.isGold ? 'text-yellow-400' : 'text-cyan-400/80'}`}>{tile.subLabel}</span>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Veritas AI Lab Section */}
+                        <div className="w-full mt-8 mb-4">
+                            <div className="text-3xl font-black uppercase tracking-widest text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.8)] text-center w-full border-t border-cyan-500/30 pt-4">
+                                Veritas AI Lab
+                            </div>
+                            <div className="grid grid-cols-3 gap-2 w-full mt-4">
+                                {labTiles.map((tile) => (
+                                    <button
+                                        key={tile.id}
+                                        onClick={(e) => handleTileClick(tile, e)}
+                                        disabled={tile.disabled}
+                                        className={`flex-none h-24 flex flex-col items-center justify-center text-center 
+                                        rounded-xl transition-all duration-300 relative overflow-hidden group
+                                        ${tile.disabled
+                                                ? 'bg-[#151b2e]/50 border border-white/5 opacity-50 cursor-not-allowed'
+                                                : 'bg-[#151b2e] border border-white/5 hover:bg-[#1e293b] hover:border-cyan-500/30 cursor-pointer'
+                                            }
+                                    `}
+                                    >
+                                        <div className="mb-1 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">{tile.icon}</div>
+                                        <div className="flex flex-col justify-center items-center">
+                                            <span className="text-xs font-bold leading-tight text-slate-100">{tile.label}</span>
+                                            <span className="text-[10px] font-mono mt-0.5 font-medium block text-cyan-400/60">{tile.subLabel}</span>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
