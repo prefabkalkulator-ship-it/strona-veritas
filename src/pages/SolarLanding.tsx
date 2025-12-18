@@ -46,22 +46,22 @@ const SolarLanding = () => {
         {
             title: "Finanse i Dotacje 2025",
             desc: "Wykaz Aktów Prawnych i Norm Technicznych",
-            link: "/demo-assets/OZE Finanse, Dotacje i Opłacalność Wykaz Aktów Prawnych i Norm Technicznych.pdf"
+            link: "/demo-assets/raport-finanse.pdf"
         },
         {
             title: "Standardy Techniczne",
             desc: "Urządzenia i Standardy Techniczne",
-            link: "/demo-assets/OZE Urządzenia i Standardy Techniczne.pdf"
+            link: "/demo-assets/standardy-techniczne.pdf"
         },
         {
             title: "Katalog i Cennik",
             desc: "Syntetyczny Cennik Usług i Komponentów",
-            link: "/demo-assets/OZE Syntetyczny Cennik.pdf"
+            link: "/demo-assets/katalog-cennik.pdf"
         },
         {
             title: "Baza FAQ",
             desc: "Najczęściej Zadawane Pytania Inwestorów",
-            link: "/demo-assets/OZE FAQ.pdf"
+            link: "/demo-assets/faq-oze.pdf"
         }
     ];
 

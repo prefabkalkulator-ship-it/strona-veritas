@@ -28,7 +28,7 @@ const ResourcesPage = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a233b]/50 border border-cyan-500/30 text-cyan-400 text-sm font-bold tracking-wide hover:bg-cyan-500/10 transition-all mb-8 group"
                 >
                     <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                    WRÓĆ DO PANELU
+                    Wróć do Strony Głównej
                 </Link>
 
                 <h1 className="text-3xl md:text-5xl font-bold text-slate-100 mb-4 tracking-tight">

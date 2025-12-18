@@ -39,7 +39,7 @@ const NextStepPage = () => {
             <div className="absolute top-6 left-6 z-50">
                 <Link to="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors bg-black/40 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 hover:border-blue-500/50">
                     <ChevronLeft size={16} />
-                    <span className="text-sm font-medium">Dashboard</span>
+                    <span className="text-sm font-medium">Wróć do Strony Głównej</span>
                 </Link>
             </div>
 
