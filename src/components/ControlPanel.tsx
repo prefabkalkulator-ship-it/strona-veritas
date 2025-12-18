@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
     ShieldCheck, ImagePlay, CalendarClock, Lock, Calculator, Rocket, PlayCircle, BookOpen, FileCheck, Snowflake,
-    Zap, FlaskConical
+    Zap, FlaskConical, LayoutTemplate
 } from 'lucide-react';
 
 declare global {
@@ -74,19 +74,20 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
 
     const labTiles = [
         {
+            id: 'nextstep',
+            icon: <LayoutTemplate className="w-5 h-5 md:w-8 md:h-8 text-blue-400" />,
+            label: 'NextStep Web',
+            subLabel: 'Eksperyment AI',
+            action: 'NAVIGATE_NEXTSTEP',
+            isGold: false
+        },
+        {
             id: 'oze-bot',
             icon: <Zap className="w-5 h-5 md:w-8 md:h-8 text-yellow-400" />,
             label: 'Ekspert OZE',
             subLabel: 'Wirtualny Asystent',
             action: 'NAVIGATE_OZE',
             isGold: false
-        },
-        {
-            id: 'rnd-1',
-            icon: <FlaskConical className="w-5 h-5 md:w-8 md:h-8 text-slate-600" />,
-            label: 'R&D',
-            subLabel: 'Wkrótce...',
-            disabled: true
         },
         {
             id: 'rnd-2',
@@ -110,6 +111,11 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
 
         if (tile.action === 'NAVIGATE_OZE') {
             navigate('/ekspert-oze');
+            return;
+        }
+
+        if (tile.action === 'NAVIGATE_NEXTSTEP') {
+            navigate('/nextstep-web');
             return;
         }
 
@@ -264,6 +270,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                         </Link>
                     )
                 ))}
+                <span className="text-gray-700">|</span>
+                <a href="mailto:support@veritas-app.com" className="flex items-center text-[10px] md:text-xs text-slate-400 hover:text-cyan-300 transition-colors uppercase tracking-wider font-mono">
+                    support@veritas-app.com
+                </a>
             </div>
         </div>
     );

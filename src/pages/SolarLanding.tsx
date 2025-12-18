@@ -223,7 +223,12 @@ const SolarLanding = () => {
 
             {/* Footer Simple */}
             <footer className="bg-gray-900 text-gray-400 py-12 text-center text-sm">
-                <p>&copy; {new Date().getFullYear()} Veritas OZE. Wszelkie prawa zastrzeżone.</p>
+                <p>
+                    &copy; {new Date().getFullYear()} Veritas OZE. Wszelkie prawa zastrzeżone.
+                    <a href="mailto:support@veritas-app.com" className="ml-4 text-gray-500 hover:text-white transition-colors">
+                        Kontakt: support@veritas-app.com
+                    </a>
+                </p>
             </footer>
 
             {/* Floating Action Button */}
@@ -274,11 +279,16 @@ const SolarLanding = () => {
                         >
                             <X size={24} />
                         </button>
-                        <div className="w-full h-full flex items-center justify-center flex-col text-white">
-                            <Play size={64} className="mb-4 opacity-50" />
-                            <p className="text-xl font-medium">Video Demo Placeholder</p>
-                            <p className="text-white/50 text-sm mt-2">YouTube / Vimeo Embed</p>
-                        </div>
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/nWrpcuocOik?autoplay=1"
+                            title="Video Demo"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-full"
+                        ></iframe>
                     </div>
                 </div>
             )}
