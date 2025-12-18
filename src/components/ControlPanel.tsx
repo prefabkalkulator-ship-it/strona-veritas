@@ -152,7 +152,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
 
             {/* SEKCJA 2: Content (Scrollable) */}
             <div className="flex-1 min-h-0 relative z-10">
-                <div className="h-full w-full overflow-x-auto p-3 snap-x scrollbar-hide md:overflow-y-auto md:p-6 md:flex md:flex-col">
+                <div className="h-full w-full overflow-y-auto p-3 scrollbar-hide md:p-6 md:flex md:flex-col">
 
                     {/* --- DESKTOP ONLY: Świąteczna Promocja --- */}
                     <div className="hidden md:flex flex-col items-center justify-center bg-gradient-to-r from-blue-900/40 to-cyan-900/40 border border-cyan-500/30 p-3 rounded-xl mb-4 text-center shadow-[0_0_15px_rgba(34,211,238,0.1)] w-full flex-none">
@@ -177,27 +177,55 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                         </div>
                     </div>
 
-                    {/* --- MOBILE VIEW: SINGLE LIST --- */}
-                    <div className="flex flex-row md:hidden gap-3 w-max px-2">
-                        {[...mainTiles, labTiles[0]].map((tile) => (
-                            <button
-                                key={tile.id}
-                                onClick={(e) => handleTileClick(tile, e)}
-                                className={`flex-none w-[140px] h-24 flex flex-col items-center justify-center text-center 
-                                rounded-xl snap-center p-1 transition-all duration-300 relative overflow-hidden cursor-pointer group
-                                ${tile.isGold
-                                        ? 'bg-[#151b2e] border border-yellow-500/60 shadow-[0_0_15px_rgba(234,179,8,0.2)]'
-                                        : 'bg-[#151b2e] border border-white/5 hover:bg-[#1e293b] hover:border-cyan-500/30'
-                                    }
-                            `}
-                            >
-                                <div className="mb-1 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">{tile.icon}</div>
-                                <div className="flex flex-col justify-center items-center">
-                                    <span className={`text-xs font-bold leading-tight ${tile.isGold ? 'text-yellow-100' : 'text-slate-100'}`}>{tile.label}</span>
-                                    <span className={`text-[10px] font-mono mt-0.5 font-medium block ${tile.isGold ? 'text-yellow-400' : 'text-cyan-400/80'}`}>{tile.subLabel}</span>
-                                </div>
-                            </button>
-                        ))}
+                    {/* --- MOBILE VIEW: SECTIONS --- */}
+                    <div className="md:hidden flex flex-col gap-6 pb-8">
+                        {/* 1. Main Tiles - Horizontal Scroll */}
+                        <div className="flex overflow-x-auto gap-3 w-full pb-2 snap-x scrollbar-hide px-1">
+                            {mainTiles.map((tile) => (
+                                <button
+                                    key={tile.id}
+                                    onClick={(e) => handleTileClick(tile, e)}
+                                    className={`flex-none w-[140px] h-24 flex flex-col items-center justify-center text-center 
+                                    rounded-xl snap-center p-1 transition-all duration-300 relative overflow-hidden cursor-pointer group
+                                    ${tile.isGold
+                                            ? 'bg-[#151b2e] border border-yellow-500/60 shadow-[0_0_15px_rgba(234,179,8,0.2)]'
+                                            : 'bg-[#151b2e] border border-white/5 hover:bg-[#1e293b] hover:border-cyan-500/30'
+                                        }
+                                `}
+                                >
+                                    <div className="mb-1 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">{tile.icon}</div>
+                                    <div className="flex flex-col justify-center items-center">
+                                        <span className={`text-xs font-bold leading-tight ${tile.isGold ? 'text-yellow-100' : 'text-slate-100'}`}>{tile.label}</span>
+                                        <span className={`text-[10px] font-mono mt-0.5 font-medium block ${tile.isGold ? 'text-yellow-400' : 'text-cyan-400/80'}`}>{tile.subLabel}</span>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* 2. Veritas AI Lab Header & Grid */}
+                        <div className="flex flex-col gap-4 px-1">
+                            <div className="text-xl font-black uppercase tracking-widest text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.8)] text-center w-full border-t border-cyan-500/30 pt-4">
+                                Veritas AI Lab
+                            </div>
+                            <div className="grid grid-cols-2 gap-3">
+                                {labTiles.filter(t => !t.disabled).map((tile) => (
+                                    <button
+                                        key={tile.id}
+                                        onClick={(e) => handleTileClick(tile, e)}
+                                        className={`h-24 flex flex-col items-center justify-center text-center 
+                                        rounded-xl transition-all duration-300 relative overflow-hidden group
+                                        bg-[#151b2e] border border-white/5 hover:bg-[#1e293b] hover:border-cyan-500/30 cursor-pointer
+                                    `}
+                                    >
+                                        <div className="mb-1 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-md">{tile.icon}</div>
+                                        <div className="flex flex-col justify-center items-center">
+                                            <span className="text-xs font-bold leading-tight text-slate-100">{tile.label}</span>
+                                            <span className="text-[10px] font-mono mt-0.5 font-medium block text-cyan-400/60">{tile.subLabel}</span>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     {/* --- DESKTOP VIEW: SEPARATED SECTIONS --- */}
