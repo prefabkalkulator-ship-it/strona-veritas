@@ -51,7 +51,7 @@ const SolarLanding = () => {
         {
             title: "Standardy Techniczne",
             desc: "Urządzenia i Standardy Techniczne",
-            link: "/demo-assets/oze-standardy.pdf"
+            link: "/demo-assets/specs.pdf"
         },
         {
             title: "Katalog i Cennik",
