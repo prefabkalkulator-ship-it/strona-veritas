@@ -115,7 +115,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
         }
 
         if (tile.action === 'NAVIGATE_NEXTSTEP') {
-            navigate('/nextstep-web');
+            window.location.href = '/nextstep-web/index.html';
             return;
         }
 
