@@ -1,26 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/nextstep-web/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Veritas Multi-Language</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Noto+Sans:wght@300..700&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nex Assistant | Veritas AI</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* Styl sprawia, że ramka zajmuje 100% ekranu i nie ma pasków przewijania strony matki */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/nextstep-web/pics/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/nextstep-web/pics/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="/nextstep-web/pics/favicon-48x48.png">
-
-  <link rel="icon" type="image/svg+xml" href="/nextstep-web/pics/favicon-32x32.png" />
-  <script type="module" crossorigin src="/nextstep-web/assets/index-CRkTiwOT.js"></script>
-  <link rel="stylesheet" crossorigin href="/nextstep-web/assets/index-B96ajG22.css">
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="root"></div>
+    <iframe src="https://veritas-core-dev.web.app/" allow="microphone; camera; geolocation; autoplay; clipboard-write"
+        title="Nex Assistant"></iframe>
 </body>
 
 </html>

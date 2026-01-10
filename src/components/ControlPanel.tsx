@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
     ShieldCheck, ImagePlay, CalendarClock, Lock, Calculator, Rocket, PlayCircle, BookOpen, FileCheck, Snowflake,
-    Zap, FlaskConical, LayoutTemplate
+    Zap, LayoutTemplate, Folder
 } from 'lucide-react';
 
 declare global {
@@ -15,37 +15,7 @@ interface ControlPanelProps {
     onTrigger: (type: string, payload: string) => void;
 }
 
-const CountdownWidget: React.FC = () => {
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-    useEffect(() => {
-        const targetDate = new Date(new Date().getFullYear(), 11, 24, 16, 0, 0);
-        const calculate = () => {
-            const diff = targetDate.getTime() - new Date().getTime();
-            if (diff > 0) setTimeLeft({
-                days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((diff / 1000 / 60) % 60),
-                seconds: Math.floor((diff / 1000) % 60)
-            });
-        };
-        const t = setInterval(calculate, 1000); calculate(); return () => clearInterval(t);
-    }, []);
 
-    return (
-        <div className="w-full p-2 bg-[#151b2e] border border-cyan-500/20 rounded-lg relative overflow-hidden group flex flex-col items-center justify-center shadow-lg mb-2">
-            <p className="text-[9px] sm:text-[10px] text-cyan-200/70 text-center mb-1 uppercase tracking-tighter whitespace-nowrap font-mono w-full overflow-hidden text-ellipsis">
-                Do świątecznego paraliżu obsługi klienta zostało:
-            </p>
-            <div className="flex justify-center items-center space-x-3 font-mono text-cyan-400 text-sm font-bold tracking-widest drop-shadow-[0_0_5px_rgba(34,211,238,0.3)]">
-                <div className="flex flex-col items-center"><span>{String(timeLeft.days).padStart(2, '0')}</span><span className="text-[8px] text-cyan-600/80 font-sans">DNI</span></div>
-                <span className="text-cyan-700/50 -mt-2">:</span>
-                <div className="flex flex-col items-center"><span>{String(timeLeft.hours).padStart(2, '0')}</span><span className="text-[8px] text-cyan-600/80 font-sans">GODZ</span></div>
-                <span className="text-cyan-700/50 -mt-2">:</span>
-                <div className="flex flex-col items-center"><span>{String(timeLeft.minutes).padStart(2, '0')}</span><span className="text-[8px] text-cyan-600/80 font-sans">MIN</span></div>
-            </div>
-        </div>
-    );
-};
 
 const SnowEffect: React.FC = () => {
     return (
@@ -90,11 +60,17 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
             isGold: false
         },
         {
-            id: 'rnd-2',
-            icon: <FlaskConical className="w-5 h-5 md:w-8 md:h-8 text-slate-600" />,
-            label: 'R&D',
-            subLabel: 'Wkrótce...',
-            disabled: true
+            id: 'keept',
+            icon: (
+                <div className="relative flex items-center justify-center w-8 h-8">
+                    <Folder className="w-full h-full text-yellow-500 fill-yellow-500/20" />
+                    <span className="absolute text-[10px] font-black text-slate-900 pt-1">K</span>
+                </div>
+            ),
+            label: 'Veritas Keept',
+            subLabel: 'Finanse & AI',
+            action: 'NAVIGATE_KEEPT',
+            disabled: false
         }
     ];
 
@@ -116,6 +92,11 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
 
         if (tile.action === 'NAVIGATE_NEXTSTEP') {
             window.location.href = '/nextstep-web/index.html';
+            return;
+        }
+
+        if (tile.action === 'NAVIGATE_KEEPT') {
+            navigate('/keept');
             return;
         }
 
@@ -147,7 +128,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                 <h1 className="text-3xl md:text-5xl font-black uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-slate-400 drop-shadow-lg text-center w-full">
                     Veritas AI
                 </h1>
-                <CountdownWidget />
+
             </div>
 
             {/* SEKCJA 2: Content (Scrollable) */}
