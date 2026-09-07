@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
     ShieldCheck, ImagePlay, CalendarClock, Lock, Calculator, Rocket, PlayCircle, BookOpen, FileCheck, Snowflake,
-    Zap, LayoutTemplate, Folder
+    Zap, LayoutTemplate, Folder, ArrowRight
 } from 'lucide-react';
 
 declare global {
@@ -53,7 +53,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
         },
         {
             id: 'oze-bot',
-            icon: <Zap className="w-5 h-5 md:w-8 md:h-8 text-yellow-400" />,
+            icon: <Zap className="w-5 h-5 md:w-8 md:h-8 text-[#00C853]" />,
             label: 'Ekspert OZE',
             subLabel: 'Wirtualny Asystent',
             action: 'NAVIGATE_OZE',
@@ -64,7 +64,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
             icon: (
                 <div className="relative flex items-center justify-center w-8 h-8">
                     <Folder className="w-full h-full text-yellow-500 fill-yellow-500/20" />
-                    <span className="absolute text-[10px] font-black text-slate-900 pt-1">K</span>
+                    <span className="absolute text-[10px] font-black text-white italic pt-1">K</span>
                 </div>
             ),
             label: 'Veritas Keept',
@@ -135,28 +135,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
             <div className="flex-1 min-h-0 relative z-10">
                 <div className="h-full w-full overflow-y-auto p-3 scrollbar-hide md:p-6 md:flex md:flex-col">
 
-                    {/* --- DESKTOP ONLY: Świąteczna Promocja --- */}
-                    <div className="hidden md:flex flex-col items-center justify-center bg-gradient-to-r from-blue-900/40 to-cyan-900/40 border border-cyan-500/30 p-3 rounded-xl mb-4 text-center shadow-[0_0_15px_rgba(34,211,238,0.1)] w-full flex-none">
-                        <div className="flex items-center gap-2 mb-1">
-                            <span className="text-xl">🎄</span>
-                            <h3 className="text-cyan-400 font-bold uppercase tracking-wider text-sm">
-                                Świąteczna promocja: PAKIET 2: PRO GROWTH (Rekomendowany)
-                            </h3>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm">
-                            <span className="text-slate-400">Cena:</span>
-                            <span className="text-slate-500 line-through decoration-red-500/50 decoration-2 text-xs">499 PLN</span>
-                            <div className="flex flex-col leading-none">
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-green-400 font-bold text-lg">399 PLN</span>
-                                    <span className="text-slate-400 text-xs">netto / mies.</span>
-                                </div>
-                                <span className="text-green-400/80 text-[10px] uppercase tracking-wide font-semibold text-right">
-                                    (na 6 miesięcy)
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+
 
                     {/* --- MOBILE VIEW: SECTIONS --- */}
                     <div className="md:hidden flex flex-col gap-6 pb-8">
@@ -206,6 +185,26 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                                     </button>
                                 ))}
                             </div>
+
+                            {/* Wide EVA tile mobile */}
+                            <button
+                                onClick={() => navigate('/eva')}
+                                className="w-full p-3 rounded-xl bg-gradient-to-r from-[#171b2b] via-[#241f17] to-[#171b2b] border border-[#ca8a3e]/60 hover:border-[#ca8a3e] hover:shadow-[0_0_15px_rgba(202,138,62,0.3)] flex items-center justify-between transition-all group cursor-pointer"
+                            >
+                                <div className="flex items-center gap-2.5">
+                                    <div className="w-9 h-9 rounded-lg bg-[#ca8a3e]/15 border border-[#ca8a3e]/30 flex items-center justify-center p-1 shrink-0">
+                                        <img src="/eva-headset-gold.png" alt="EVA" className="w-full h-full object-contain" />
+                                    </div>
+                                    <div className="text-left">
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-xs font-bold text-amber-100">EasyVoiceAssistant</span>
+                                            <span className="text-[8px] font-bold uppercase tracking-wider px-1 py-0.5 rounded bg-[#ca8a3e]/25 text-[#ca8a3e] border border-[#ca8a3e]/40">AI Voice</span>
+                                        </div>
+                                        <span className="text-[9px] font-mono text-slate-400 block">Wirtualna Recepcja i Kalendarz 24/7</span>
+                                    </div>
+                                </div>
+                                <ArrowRight size={16} className="text-[#ca8a3e] shrink-0" />
+                            </button>
                         </div>
                     </div>
 
@@ -261,6 +260,28 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                                     </button>
                                 ))}
                             </div>
+
+                            {/* Wide EVA tile desktop */}
+                            <button
+                                onClick={() => navigate('/eva')}
+                                className="w-full mt-2.5 p-3 rounded-xl bg-gradient-to-r from-[#171b2b] via-[#241f17] to-[#171b2b] border border-[#ca8a3e]/60 hover:border-[#ca8a3e] hover:shadow-[0_0_20px_rgba(202,138,62,0.3)] flex items-center justify-between transition-all group cursor-pointer"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <div className="w-9 h-9 rounded-lg bg-[#ca8a3e]/15 border border-[#ca8a3e]/30 flex items-center justify-center p-1 group-hover:scale-110 transition-transform shrink-0">
+                                        <img src="/eva-headset-gold.png" alt="EVA" className="w-full h-full object-contain" />
+                                    </div>
+                                    <div className="text-left">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-xs font-bold text-amber-100 group-hover:text-amber-300 transition-colors">EasyVoiceAssistant</span>
+                                            <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#ca8a3e]/25 text-[#ca8a3e] border border-[#ca8a3e]/40">Głos AI 24/7</span>
+                                        </div>
+                                        <span className="text-[10px] font-mono text-slate-400 block mt-0.5">Wirtualna Recepcja i Rezerwacje • Bez Zmiany Numeru</span>
+                                    </div>
+                                </div>
+                                <div className="text-[#ca8a3e] group-hover:translate-x-1 transition-transform ml-2 shrink-0">
+                                    <ArrowRight size={16} />
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -283,6 +304,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                 <a href="mailto:support@veritas-app.com" className="flex items-center text-[10px] md:text-xs text-slate-400 hover:text-cyan-300 transition-colors uppercase tracking-wider font-mono">
                     support@veritas-app.com
                 </a>
+
             </div>
         </div>
     );
