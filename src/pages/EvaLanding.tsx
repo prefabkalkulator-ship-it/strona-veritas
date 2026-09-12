@@ -22,9 +22,7 @@ import {
   Menu,
   Globe,
   Mic,
-  Shield,
-  Check,
-  Minus
+  Shield
 } from 'lucide-react';
 
 export default function EvaLanding() {
@@ -749,43 +747,35 @@ export default function EvaLanding() {
                 <div className="space-y-3 text-sm text-surface-700 mb-8">
                   <div className="flex items-start gap-3 font-semibold text-surface-900">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>100 darmowych minut</strong> na rozmowy z dzwoniącymi co miesiąc</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span>1 dedykowany numer telefonu GSM</span>
+                    <span>1 dedykowany techniczny numer telefonu komórkowego</span>
                   </div>
                   <div className="flex items-start gap-3 font-medium text-surface-900">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Dwuetapowe powitanie</strong> (tarcza przed telemarketerami)</span>
+                    <span><strong>Dwuetapowe inteligentne powitanie</strong> (ochrona tożsamości)</span>
                   </div>
                   <div className="flex items-start gap-3 font-medium text-surface-900">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Baza Kontaktów VIP</strong> (rodzina i wspólnicy z priorytetem)</span>
+                    <span><strong>Rozpoznawanie kontaktów VIP</strong> (Rodzina, Wspólnik, Klient)</span>
                   </div>
                   <div className="flex items-start gap-3 font-medium text-surface-900">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Kurtyna danych & kod PIN</strong> (dostęp do Panelu Właściciela)</span>
+                    <span><strong>Autoryzacja kodem PIN</strong> z telefonu właściciela (sprawy poufne)</span>
                   </div>
                   <div className="flex items-start gap-3 font-medium text-surface-900">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Baza Wiedzy Poufnej</strong> (osobny PIN do faktów zastrzeżonych)</span>
+                    <span><strong>Baza wiedzy ogólnej oraz poufnej</strong> (chronionej PIN-em)</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Poranny Raport Dnia</strong> (Push + E-mail + raport głosowy)</span>
+                    <span><strong>Raporty dnia:</strong> poranny push oraz podsumowanie głosowe i e-mail</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Blokady Czasu Skupienia (Deep Work)</strong> – filtrowanie rozmów</span>
+                    <span><strong>Czas skupienia (Deep Work)</strong> z automatycznym filtrowaniem połączeń</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Rejestr Ważnych Dat & Rocznic</strong> (urodziny, polisy, terminy)</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span>4 naturalne głosy AI i ponad 140 języków</span>
+                    <span><strong>Rejestr ważnych dat</strong> (urodziny, rocznice, polisy)</span>
                   </div>
                 </div>
               </div>
@@ -936,148 +926,6 @@ export default function EvaLanding() {
                 <span>Wybierz Premium</span>
                 <ArrowRight size={16} />
               </a>
-            </div>
-          </div>
-
-          {/* TABELA PORÓWNAWCZA PAKIETÓW */}
-          <div className="mt-16 bg-white rounded-3xl p-6 sm:p-10 border border-surface-200 shadow-card-soft overflow-hidden">
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <span className="text-gold-700 font-bold text-xs uppercase tracking-widest block mb-1 font-inter">
-                Szczegółowe zestawienie parametrów
-              </span>
-              <h3 className="font-playfair text-2xl sm:text-3xl font-bold text-surface-900">
-                Porównanie funkcjonalności platformy
-              </h3>
-            </div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm border-collapse min-w-[660px]">
-                <thead>
-                  <tr className="border-b-2 border-surface-200 text-surface-900">
-                    <th className="py-4 px-4 font-semibold w-2/5">Funkcjonalność</th>
-                    <th className="py-4 px-3 text-center font-bold text-surface-900 bg-surface-50/70 rounded-t-xl">
-                      Pakiet Osobisty AI
-                      <span className="block text-xs font-normal text-gold-700 mt-0.5">149 zł netto / mc</span>
-                    </th>
-                    <th className="py-4 px-3 text-center font-bold text-surface-900">
-                      Standard B2B
-                      <span className="block text-xs font-normal text-surface-500 mt-0.5">199 zł netto / mc</span>
-                    </th>
-                    <th className="py-4 px-3 text-center font-bold text-gold-900 bg-gold-50/80 rounded-t-xl">
-                      Premium B2B
-                      <span className="block text-xs font-semibold text-gold-700 mt-0.5">399 zł netto / mc</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-surface-100 text-surface-700">
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Darmowe minuty w abonamencie co miesiąc</td>
-                    <td className="py-3.5 px-3 text-center font-bold text-surface-900 bg-surface-50/70">100 min</td>
-                    <td className="py-3.5 px-3 text-center font-medium">100 min</td>
-                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80">300 min</td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Dedykowany numer telefonu GSM</td>
-                    <td className="py-3.5 px-3 text-center bg-surface-50/70"><Check size={18} className="text-emerald-600 inline" /></td>
-                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
-                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">4 naturalne głosy AI i obsługa ponad 140 języków</td>
-                    <td className="py-3.5 px-3 text-center bg-surface-50/70"><Check size={18} className="text-emerald-600 inline" /></td>
-                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
-                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
-                    <td className="py-3.5 px-4 font-semibold text-surface-900">
-                      Tarcza Prywatności & Dwuetapowe powitanie
-                    </td>
-                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
-                    <td className="py-3.5 px-4 font-semibold text-surface-900">
-                      Kontakty VIP & Alerty Push z etykietą PILNE
-                    </td>
-                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
-                    <td className="py-3.5 px-4 font-semibold text-surface-900">
-                      Autoryzacja kodem PIN (Właściciel & Poufne FAQ)
-                    </td>
-                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
-                    <td className="py-3.5 px-4 font-semibold text-surface-900">
-                      Poranny Raport Dnia (Push + E-mail) & Czas Skupienia Deep Work
-                    </td>
-                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
-                    <td className="py-3.5 px-4 font-semibold text-surface-900">
-                      Rejestr Ważnych Dat & Rocznic (urodziny, polisy, terminy)
-                    </td>
-                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Baza Wiedzy AI ze zdjęć cenników i PDF</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
-                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Rezerwacje wizyt w kalendarzu & potwierdzenia SMS</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
-                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Grafiki pracowników i obsługa świąt</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
-                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Moduł Last Minute (ratowanie odwołanych terminów)</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Badanie Satysfakcji NPS po wizycie</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Reaktywacja dawnych klientów 90+ dni</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Telefoniczne potwierdzanie rezerwacji (Zero No-Show)</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                  <tr className="hover:bg-surface-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-medium text-surface-900">Wielokanałowość (do 5 równoczesnych połączeń)</td>
-                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
-                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
