@@ -314,6 +314,9 @@ export default function EvaTerms() {
                   Korzystanie z platformy wymaga uiszczania opłaty abonamentowej zgodnie z wybranym planem:
                   <ul className="list-disc pl-5 mt-2 space-y-2 text-surface-700">
                     <li>
+                      <strong>Plan Osobisty AI (Executive):</strong> 149 zł netto / miesiąc (zawiera 100 darmowych minut połączeń, 1 dedykowany numer GSM, ochronę prywatności i dwuetapowe powitanie z tarczą przed telemarketerami, bazę kontaktów VIP z priorytetowymi alertami Push i E-mail, weryfikację kodem PIN do Panelu Właściciela i wiedzy poufnej, poranne raporty dnia oraz harmonogram blokad skupienia Deep Work).
+                    </li>
+                    <li>
                       <strong>Plan Standard:</strong> 199 zł netto / miesiąc (zawiera 100 darmowych minut połączeń, 1 numer techniczny, 4 naturalne głosy AI, obsługę ponad 140 języków, rezerwacje kalendarzowe, powiadomienia SMS, Bazę Wiedzy AI ze zdjęć i plików PDF oraz obsługę grafików pracowników i dni wolnych).
                     </li>
                     <li>

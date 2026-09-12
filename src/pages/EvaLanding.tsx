@@ -21,7 +21,10 @@ import {
   Mail,
   Menu,
   Globe,
-  Mic
+  Mic,
+  Shield,
+  Check,
+  Minus
 } from 'lucide-react';
 
 export default function EvaLanding() {
@@ -45,6 +48,14 @@ export default function EvaLanding() {
     {
       q: "W ilu językach potrafi rozmawiać EVA z dzwoniącymi klientami?",
       a: "EVA obsługuje ponad 140 języków z automatycznym rozpoznawaniem mowy. Jeżeli dzwoniący klient zacznie rozmowę po angielsku, ukraińsku, niemiecku czy hiszpańsku, EVA natychmiast płynnie odpowie w jego języku ojczystym."
+    },
+    {
+      q: "Czym różni się Pakiet Osobisty AI (Executive) od pakietów firmowych Standard i Premium?",
+      a: "Pakiet Osobisty (149 zł/mc) to Twoja prywatna, dyskretna sekretarka AI stworzona dla przedsiębiorców, menedżerów, prawników i lekarzy. Zamiast masowej recepcji cennikowej, chroni Twój czas skupienia (Deep Work) i bezwzględną prywatność. Stosuje dwuetapowe powitanie filtrujące telemarketerów i natrętów, wpuszcza wyłącznie kontakty VIP (rodzinę, wspólników), wysyła poranny raport dnia (Push + E-mail), pamięta o ważnych rocznicach i zabezpiecza dostęp do Twojego kalendarza kodem PIN."
+    },
+    {
+      q: "Jak działa zabezpieczenie kodem PIN i Baza Wiedzy Poufnej w Pakiecie Osobistym?",
+      a: "Dzwoniąc na numer asystenta ze swojego telefonu, wchodzisz do Panelu Właściciela chronionego kodem PIN – bez niego asystent ma absolutny zakaz ujawniania Twoich wiadomości i terminów. Co więcej, w Bazie Wiedzy możesz oznaczyć wybrane informacje (np. stawki projektowe lub wewnętrzne procedury) jako poufne – asystent przekaże je dzwoniącemu wyłącznie po podaniu właściwego hasła dostępu."
     },
     {
       q: "Jak w 10 minut przekierować połączenia z mojego smartfona?",
@@ -98,12 +109,12 @@ export default function EvaLanding() {
                 Oferta Limitowana
               </span>
               <p className="font-medium text-surface-100 text-xs md:text-sm">
-                🎉 <strong className="text-gold-300">Program Wczesnych Testów:</strong> Pierwsze 3 firmy otrzymują 3 miesiące abonamentu całkowicie bezpłatnie!
+                🎉 <strong className="text-gold-300">Program Wczesnych Testów:</strong> Pierwsze 5 użytkowników otrzymują miesiąc abonamentu całkowicie bezpłatnie!
               </p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
               <a
-                href="mailto:support@veritas-app.com?subject=Zg%C5%82oszenie%20do%20Programu%20Wczesnych%20Test%C3%B3w%20EVA&body=Dzie%C5%84%20dobry,%0A%0AChcieliby%C5%9Bmy%20zg%C5%82osi%C4%87%20nasz%C4%85%20firm%C4%99%20do%20bezp%C5%82atnego%20testowania%20asystenta%20EVA%20(3%20miesi%C4%85ce%20gratis).%0A%0ANazwa%20firmy:%20%0ABran%C5%BCa:%20%0ANumer%20telefonu:%20"
+                href="mailto:support@veritas-app.com?subject=Zg%C5%82oszenie%20do%20Programu%20Wczesnych%20Test%C3%B3w%20EVA&body=Dzie%C5%84%20dobry,%0A%0AChcieliby%C5%9Bmy%20zg%C5%82osi%C4%87%20si%C4%99%20do%20bezp%C5%82atnego%20testowania%20asystenta%20EVA%20(miesi%C4%85c%20gratis).%0A%0AImi%C4%99%20i%20Nazwisko%20/%20Firma:%20%0AWybrany%20pakiet%20(Osobisty%20/%20Standard%20/%20Premium):%20%0ANumer%20telefonu:%20"
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500 hover:bg-gold-600 text-surface-900 font-semibold text-xs transition-all shadow-sm"
               >
                 <Mail size={13} />
@@ -527,7 +538,7 @@ export default function EvaLanding() {
             </div>
 
             {/* FILAR 5: GŁOSY */}
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-surface-200/80 shadow-card-soft hover:shadow-card-hover transition-all group md:col-span-2 lg:col-span-2">
+            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-surface-200/80 shadow-card-soft hover:shadow-card-hover transition-all group">
               <div className="w-14 h-14 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-600 mb-6 group-hover:scale-110 transition-transform">
                 <Mic size={28} />
               </div>
@@ -536,6 +547,23 @@ export default function EvaLanding() {
               </h3>
               <p className="text-surface-600 text-sm leading-relaxed">
                 Dopasuj barwę, tempo i styl asystenta do wizerunku Twojej marki – od ciepłego, kojącego tonu recepcji beauty i medycyny, po pewny i precyzyjny głos serwisu technicznego lub kancelarii. Pełna personalizacja dostępna w każdym pakiecie.
+              </p>
+            </div>
+
+            {/* FILAR 6: PAKIET OSOBISTY (EXECUTIVE) */}
+            <div className="bg-gradient-to-br from-white to-gold-50/70 backdrop-blur-md rounded-3xl p-8 border border-gold-300 shadow-card-soft hover:shadow-card-hover transition-all group relative overflow-hidden">
+              <div className="w-14 h-14 rounded-2xl bg-gold-100 border border-gold-300 flex items-center justify-center text-gold-700 mb-6 group-hover:scale-110 transition-transform">
+                <Shield size={28} />
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gold-500 text-surface-900 uppercase tracking-wide">Nowość</span>
+                <span className="text-xs font-semibold text-gold-800 uppercase tracking-wider">Tryb Executive</span>
+              </div>
+              <h3 className="font-playfair text-xl font-bold text-surface-900 mb-3">
+                Tarcza Prywatności & Sekretarka Osobista
+              </h3>
+              <p className="text-surface-600 text-sm leading-relaxed">
+                Dla osób ceniących czas i dyskrecję: ochrona Deep Work, dwuetapowe powitanie filtrujące telemarketerów, natychmiastowe alerty VIP, kurtyna danych kodem PIN oraz poranny raport na telefon.
               </p>
             </div>
           </div>
@@ -692,16 +720,89 @@ export default function EvaLanding() {
               Przejrzyste zasady rozliczeń B2B
             </span>
             <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-surface-900 tracking-tight">
-              Wybierz pakiet dopasowany do skali Twojej firmy
+              Wybierz pakiet dopasowany do Twoich potrzeb i stylu pracy
             </h2>
             <p className="text-surface-600 text-base mt-4">
               Bez ukrytych opłat, bez długich zobowiązań. Możesz zmienić pakiet lub zrezygnować w dowolnym miesiącu.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
+            {/* PAKIET OSOBISTY AI (EXECUTIVE) */}
+            <div className="bg-white rounded-3xl p-8 sm:p-9 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
+              <div>
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-playfair text-2xl font-bold text-surface-900">Pakiet Osobisty</h3>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gold-100 text-gold-800">
+                    Sekretarka Executive
+                  </span>
+                </div>
+                <p className="text-surface-500 text-sm mb-6 min-h-[40px]">
+                  Dla przedsiębiorców, menedżerów, prawników i lekarzy. Chroni Twój czas skupienia (Deep Work) i bezwzględną prywatność.
+                </p>
+                <div className="mb-6">
+                  <span className="font-playfair text-4xl sm:text-5xl font-bold text-surface-900">149 zł</span>
+                  <span className="text-surface-500 text-sm ml-2">netto / miesiąc</span>
+                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min (naliczane sekundowo)</div>
+                </div>
+
+                <div className="space-y-3 text-sm text-surface-700 mb-8">
+                  <div className="flex items-start gap-3 font-semibold text-surface-900">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>100 darmowych minut</strong> na rozmowy z dzwoniącymi co miesiąc</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span>1 dedykowany numer telefonu GSM</span>
+                  </div>
+                  <div className="flex items-start gap-3 font-medium text-surface-900">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Dwuetapowe powitanie</strong> (tarcza przed telemarketerami)</span>
+                  </div>
+                  <div className="flex items-start gap-3 font-medium text-surface-900">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Baza Kontaktów VIP</strong> (rodzina i wspólnicy z priorytetem)</span>
+                  </div>
+                  <div className="flex items-start gap-3 font-medium text-surface-900">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Kurtyna danych & kod PIN</strong> (dostęp do Panelu Właściciela)</span>
+                  </div>
+                  <div className="flex items-start gap-3 font-medium text-surface-900">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Baza Wiedzy Poufnej</strong> (osobny PIN do faktów zastrzeżonych)</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Poranny Raport Dnia</strong> (Push + E-mail + raport głosowy)</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Blokady Czasu Skupienia (Deep Work)</strong> – filtrowanie rozmów</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Rejestr Ważnych Dat & Rocznic</strong> (urodziny, polisy, terminy)</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span>4 naturalne głosy AI i ponad 140 języków</span>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="https://beautyvoice-bff.web.app/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+              >
+                <span>Wybierz Osobisty</span>
+                <ArrowRight size={16} />
+              </a>
+            </div>
+
             {/* PAKIET STANDARD */}
-            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-surface-200 shadow-card-soft flex flex-col justify-between">
+            <div className="bg-white rounded-3xl p-8 sm:p-9 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
               <div>
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="font-playfair text-2xl font-bold text-surface-900">Pakiet Standard</h3>
@@ -709,15 +810,16 @@ export default function EvaLanding() {
                     Podstawowa Recepcja
                   </span>
                 </div>
-                <p className="text-surface-500 text-sm mb-6">
+                <p className="text-surface-500 text-sm mb-6 min-h-[40px]">
                   Idealne rozwiązanie dla jednoosobowych działalności i gabinetów chcących profesjonalnie zabezpieczyć nieodebrane telefony i rezerwacje.
                 </p>
-                <div className="mb-8">
+                <div className="mb-6">
                   <span className="font-playfair text-4xl sm:text-5xl font-bold text-surface-900">199 zł</span>
                   <span className="text-surface-500 text-sm ml-2">netto / miesiąc</span>
+                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min (naliczane sekundowo)</div>
                 </div>
 
-                <div className="space-y-3.5 text-sm text-surface-700 mb-8">
+                <div className="space-y-3 text-sm text-surface-700 mb-8">
                   <div className="flex items-start gap-3 font-semibold text-surface-900">
                     <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
                     <span><strong>100 darmowych minut</strong> na rozmowy z klientami co miesiąc</span>
@@ -761,7 +863,7 @@ export default function EvaLanding() {
                 href="https://beautyvoice-bff.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
               >
                 <span>Wybierz Standard</span>
                 <ArrowRight size={16} />
@@ -769,8 +871,8 @@ export default function EvaLanding() {
             </div>
 
             {/* PAKIET PREMIUM (REKOMENDOWANY) */}
-            <div className="bg-gradient-to-b from-white to-gold-50/40 rounded-3xl p-8 sm:p-10 border-2 border-gold-400 shadow-xl flex flex-col justify-between relative">
-              <div className="absolute -top-3.5 right-8 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">
+            <div className="bg-gradient-to-b from-white to-gold-50/40 rounded-3xl p-8 sm:p-9 border-2 border-gold-400 shadow-xl flex flex-col justify-between relative">
+              <div className="absolute -top-3.5 right-6 sm:right-8 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-3 sm:px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-md">
                 Rekomendowany – Pełna Automatyzacja
               </div>
 
@@ -781,12 +883,13 @@ export default function EvaLanding() {
                     Maksymalizacja Przychodów
                   </span>
                 </div>
-                <p className="text-surface-600 text-sm mb-6">
+                <p className="text-surface-600 text-sm mb-6 min-h-[40px]">
                   Dla firm, które chcą aktywnie zapełniać kalendarz, badać opinie i wyeliminować zapominalskich klientów (No-Show).
                 </p>
                 <div className="mb-6">
                   <span className="font-playfair text-4xl sm:text-5xl font-bold text-surface-900">399 zł</span>
                   <span className="text-surface-500 text-sm ml-2">netto / miesiąc</span>
+                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min (naliczane sekundowo)</div>
                 </div>
 
                 <div className="space-y-3 text-sm text-surface-800 mb-8">
@@ -796,9 +899,9 @@ export default function EvaLanding() {
                   </div>
 
                   {/* WYRÓŻNIONY BANER "WSZYSTKO W STANDARD I DODATKOWO" */}
-                  <div className="py-2 px-3.5 rounded-xl bg-gold-100/80 border border-gold-300 text-gold-900 text-xs font-bold uppercase tracking-wider flex items-center gap-2 my-2">
-                    <Sparkles size={15} className="text-gold-600 shrink-0" />
-                    <span>Wszystko z pakietu Standard, oraz dodatkowo:</span>
+                  <div className="py-2 px-3 rounded-xl bg-gold-100/80 border border-gold-300 text-gold-900 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 my-2">
+                    <Sparkles size={14} className="text-gold-600 shrink-0" />
+                    <span>Wszystko z pakietu Standard, oraz:</span>
                   </div>
 
                   <div className="flex items-start gap-3 font-medium text-surface-900">
@@ -828,11 +931,153 @@ export default function EvaLanding() {
                 href="https://beautyvoice-bff.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-sm transition-all shadow-lg hover:shadow-xl hover:scale-[1.01]"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-sm transition-all shadow-lg hover:shadow-xl hover:scale-[1.01]"
               >
-                <span>Wybierz Premium (Pełna Automatyzacja)</span>
+                <span>Wybierz Premium</span>
                 <ArrowRight size={16} />
               </a>
+            </div>
+          </div>
+
+          {/* TABELA PORÓWNAWCZA PAKIETÓW */}
+          <div className="mt-16 bg-white rounded-3xl p-6 sm:p-10 border border-surface-200 shadow-card-soft overflow-hidden">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <span className="text-gold-700 font-bold text-xs uppercase tracking-widest block mb-1 font-inter">
+                Szczegółowe zestawienie parametrów
+              </span>
+              <h3 className="font-playfair text-2xl sm:text-3xl font-bold text-surface-900">
+                Porównanie funkcjonalności platformy
+              </h3>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm border-collapse min-w-[660px]">
+                <thead>
+                  <tr className="border-b-2 border-surface-200 text-surface-900">
+                    <th className="py-4 px-4 font-semibold w-2/5">Funkcjonalność</th>
+                    <th className="py-4 px-3 text-center font-bold text-surface-900 bg-surface-50/70 rounded-t-xl">
+                      Pakiet Osobisty AI
+                      <span className="block text-xs font-normal text-gold-700 mt-0.5">149 zł netto / mc</span>
+                    </th>
+                    <th className="py-4 px-3 text-center font-bold text-surface-900">
+                      Standard B2B
+                      <span className="block text-xs font-normal text-surface-500 mt-0.5">199 zł netto / mc</span>
+                    </th>
+                    <th className="py-4 px-3 text-center font-bold text-gold-900 bg-gold-50/80 rounded-t-xl">
+                      Premium B2B
+                      <span className="block text-xs font-semibold text-gold-700 mt-0.5">399 zł netto / mc</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-surface-100 text-surface-700">
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Darmowe minuty w abonamencie co miesiąc</td>
+                    <td className="py-3.5 px-3 text-center font-bold text-surface-900 bg-surface-50/70">100 min</td>
+                    <td className="py-3.5 px-3 text-center font-medium">100 min</td>
+                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80">300 min</td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Dedykowany numer telefonu GSM</td>
+                    <td className="py-3.5 px-3 text-center bg-surface-50/70"><Check size={18} className="text-emerald-600 inline" /></td>
+                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
+                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">4 naturalne głosy AI i obsługa ponad 140 języków</td>
+                    <td className="py-3.5 px-3 text-center bg-surface-50/70"><Check size={18} className="text-emerald-600 inline" /></td>
+                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
+                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
+                    <td className="py-3.5 px-4 font-semibold text-surface-900">
+                      Tarcza Prywatności & Dwuetapowe powitanie
+                    </td>
+                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
+                    <td className="py-3.5 px-4 font-semibold text-surface-900">
+                      Kontakty VIP & Alerty Push z etykietą PILNE
+                    </td>
+                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
+                    <td className="py-3.5 px-4 font-semibold text-surface-900">
+                      Autoryzacja kodem PIN (Właściciel & Poufne FAQ)
+                    </td>
+                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
+                    <td className="py-3.5 px-4 font-semibold text-surface-900">
+                      Poranny Raport Dnia (Push + E-mail) & Czas Skupienia Deep Work
+                    </td>
+                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors bg-gold-50/20">
+                    <td className="py-3.5 px-4 font-semibold text-surface-900">
+                      Rejestr Ważnych Dat & Rocznic (urodziny, polisy, terminy)
+                    </td>
+                    <td className="py-3.5 px-3 text-center font-semibold text-gold-800 bg-surface-50/70"><Check size={18} className="text-gold-600 inline" /> Tak</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-gold-50/80"><Minus size={16} className="inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Baza Wiedzy AI ze zdjęć cenników i PDF</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
+                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Rezerwacje wizyt w kalendarzu & potwierdzenia SMS</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
+                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Grafiki pracowników i obsługa świąt</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center"><Check size={18} className="text-emerald-600 inline" /></td>
+                    <td className="py-3.5 px-3 text-center bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Moduł Last Minute (ratowanie odwołanych terminów)</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Badanie Satysfakcji NPS po wizycie</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Reaktywacja dawnych klientów 90+ dni</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Telefoniczne potwierdzanie rezerwacji (Zero No-Show)</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                  <tr className="hover:bg-surface-50/50 transition-colors">
+                    <td className="py-3.5 px-4 font-medium text-surface-900">Wielokanałowość (do 5 równoczesnych połączeń)</td>
+                    <td className="py-3.5 px-3 text-center text-surface-300 bg-surface-50/70"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center text-surface-300"><Minus size={16} className="inline" /></td>
+                    <td className="py-3.5 px-3 text-center font-bold text-gold-900 bg-gold-50/80"><Check size={18} className="text-emerald-600 inline" /></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
