@@ -22,10 +22,7 @@ import {
   Menu,
   Globe,
   Mic,
-  Shield,
-  Code,
-  Copy,
-  Check
+  Shield
 } from 'lucide-react';
 
 export default function EvaLanding() {
@@ -33,29 +30,6 @@ export default function EvaLanding() {
   const SHOW_BETA_BANNER = true;
   const [isBannerOpen, setIsBannerOpen] = useState(SHOW_BETA_BANNER);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Widget copy states
-  const [copiedCode, setCopiedCode] = useState(false);
-  const [copiedLink, setCopiedLink] = useState(false);
-
-  const iframeSnippet = `<iframe src="https://beautyvoice-bff.web.app/widget/callback" width="100%" height="340" frameborder="0" style="border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 420px; width: 100%; border: 1px solid #e5e7eb;"></iframe>`;
-  const widgetUrl = "https://beautyvoice-bff.web.app/widget/callback";
-
-  const handleCopyCode = () => {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(iframeSnippet);
-    }
-    setCopiedCode(true);
-    setTimeout(() => setCopiedCode(false), 2500);
-  };
-
-  const handleCopyLink = () => {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(widgetUrl);
-    }
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2500);
-  };
 
   // FAQ accordion state
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -403,116 +377,60 @@ export default function EvaLanding() {
       </section>
 
       {/* 3.5 WIDŻET ZEWNĘTRZNY - LIVE CALLBACK W 30 SEKUND */}
-      <section id="widzet" className="py-16 md:py-20 bg-gradient-to-b from-surface-50 via-white to-surface-50/70 border-b border-surface-200/80">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            {/* LEWA KOLUMNA: OPIS, CTA I KOD OSADZENIA */}
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-100/90 border border-gold-300 text-gold-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-                <Sparkles size={14} className="text-gold-600" />
-                <span>Widżet Zewnętrzny</span>
+      {/* 3.5 WIDŻET LIVE CALLBACK W 30 SEKUND */}
+      <section id="widzet" className="py-14 md:py-20 bg-gradient-to-b from-surface-50 via-white to-surface-50/70 border-b border-surface-200/80">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-100/90 border border-gold-300 text-gold-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <Sparkles size={14} className="text-gold-600" />
+            <span>Test Na Żywo</span>
+          </div>
+
+          <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-surface-900 mb-4 leading-tight">
+            Widżet „Live Callback w 30 sekund”
+          </h2>
+
+          <p className="text-surface-600 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+            Wpisz swój numer telefonu poniżej – asystent EVA zadzwoni do Ciebie automatycznie w 30 sekund, aby zaprezentować możliwości rozmowy na żywo.
+          </p>
+
+          <div className="flex flex-col items-center justify-center">
+            <div className="w-full max-w-[440px] bg-white rounded-3xl p-3 sm:p-5 shadow-2xl border border-surface-200/90 flex flex-col items-center">
+              <div className="flex items-center justify-between w-full mb-3 pb-2.5 border-b border-surface-100 text-xs font-medium text-surface-600">
+                <span className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="font-semibold text-surface-800">Formularz natychmiastowego połączenia</span>
+                </span>
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-100 text-surface-600">30s Callback</span>
               </div>
-
-              <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-surface-900 mb-4 leading-tight">
-                Widżet „Live Callback w 30 sekund”
-              </h2>
-
-              <p className="text-surface-600 text-sm sm:text-base leading-relaxed mb-6">
-                Zainstaluj interaktywny formularz na dowolnej stronie zewnętrznej (WordPress, Wix, Webflow, sklep online). Gdy klient wpisze numer, asystent zadzwoni do niego automatycznie w 30 sekund.
-              </p>
-
-              {/* PRZYCISKI AKCJI */}
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <a
-                  href="https://beautyvoice-bff.web.app/widget/callback"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gold-500 hover:bg-gold-600 text-surface-900 font-bold text-sm transition-all shadow-md hover:shadow-lg hover:scale-[1.02]"
-                >
-                  <span>Otwórz widżet w nowej karcie</span>
-                  <ExternalLink size={16} />
-                </a>
-
-                <button
-                  type="button"
-                  onClick={handleCopyLink}
-                  className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white hover:bg-surface-100 text-surface-800 font-semibold text-sm border border-surface-300 transition-all shadow-sm hover:border-gold-400"
-                >
-                  {copiedLink ? (
-                    <>
-                      <Check size={16} className="text-emerald-600" />
-                      <span className="text-emerald-700 font-semibold">Skopiowano link!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={16} className="text-surface-600" />
-                      <span>Kopiuj link</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* BLOK Z KODEM IFRAME */}
-              <div className="bg-surface-900 rounded-2xl p-4 sm:p-5 text-white border border-surface-800 shadow-xl">
-                <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-gold-400 flex items-center gap-1.5">
-                    <Code size={14} className="shrink-0" />
-                    <span>Kod osadzenia &lt;iframe&gt; na stronę WWW</span>
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleCopyCode}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-800 hover:bg-surface-700 text-surface-200 hover:text-white text-xs font-medium border border-surface-700 transition-colors shrink-0"
-                  >
-                    {copiedCode ? (
-                      <>
-                        <Check size={13} className="text-emerald-400" />
-                        <span className="text-emerald-400 font-semibold">Skopiowano!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={13} />
-                        <span>Kopiuj kod</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-                <div className="bg-surface-950 rounded-xl p-3 font-mono text-xs text-gold-200/90 break-all overflow-x-auto select-all border border-surface-800/60 leading-relaxed">
-                  {iframeSnippet}
-                </div>
+              <div className="w-full flex justify-center overflow-hidden">
+                <iframe
+                  src="https://beautyvoice-bff.web.app/widget/callback"
+                  width="100%"
+                  height="340"
+                  frameBorder="0"
+                  style={{
+                    borderRadius: '20px',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                    maxWidth: '420px',
+                    width: '100%',
+                    border: '1px solid #e5e7eb'
+                  }}
+                  title="Widżet Live Callback w 30 sekund"
+                />
               </div>
             </div>
 
-            {/* PRAWA KOLUMNA: PODGLĄD NA ŻYWO WIDŻETU */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center">
-              <div className="w-full max-w-[430px] bg-white rounded-3xl p-4 sm:p-5 shadow-2xl border border-surface-200/90 flex flex-col items-center">
-                <div className="flex items-center justify-between w-full mb-3 pb-2.5 border-b border-surface-100 text-xs font-medium text-surface-600">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="font-semibold text-surface-800">Podgląd na żywo widżetu</span>
-                  </span>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-100 text-surface-600">30s Callback</span>
-                </div>
-                <div className="w-full flex justify-center overflow-hidden">
-                  <iframe
-                    src="https://beautyvoice-bff.web.app/widget/callback"
-                    width="100%"
-                    height="340"
-                    frameBorder="0"
-                    style={{
-                      borderRadius: '20px',
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                      maxWidth: '420px',
-                      width: '100%',
-                      border: '1px solid #e5e7eb'
-                    }}
-                    title="EVA Live Callback Widget"
-                  />
-                </div>
-              </div>
+            <div className="mt-4">
+              <a
+                href="https://beautyvoice-bff.web.app/widget/callback"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-gold-700 transition-colors"
+              >
+                <span>Otwórz widżet w nowej karcie</span>
+                <ExternalLink size={13} />
+              </a>
             </div>
-
           </div>
         </div>
       </section>
@@ -932,8 +850,12 @@ export default function EvaLanding() {
               </a>
             </div>
 
-            {/* PAKIET OSOBISTY EKSPERT */}
-            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
+            {/* PAKIET OSOBISTY EKSPERT (WYRÓŻNIONY) */}
+            <div className="bg-gradient-to-b from-white to-gold-50/40 rounded-3xl p-6 sm:p-7 border-2 border-gold-400 shadow-xl flex flex-col justify-between relative hover:border-gold-500 transition-all">
+              <div className="absolute -top-3.5 right-4 sm:right-6 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-3 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-md">
+                Kancelarie &amp; Eksperci
+              </div>
+
               <div>
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="font-playfair text-xl sm:text-2xl font-bold text-surface-900">Osobisty Ekspert</h3>
@@ -988,7 +910,7 @@ export default function EvaLanding() {
                 href="https://beautyvoice-bff.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-sm transition-all shadow-md hover:shadow-lg hover:scale-[1.01]"
               >
                 <span>Wybierz Osobisty Ekspert</span>
                 <ArrowRight size={16} />
@@ -1067,7 +989,7 @@ export default function EvaLanding() {
             {/* PAKIET PREMIUM (REKOMENDOWANY) */}
             <div className="bg-gradient-to-b from-white to-gold-50/40 rounded-3xl p-6 sm:p-7 border-2 border-gold-400 shadow-xl flex flex-col justify-between relative">
               <div className="absolute -top-3.5 right-4 sm:right-6 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-3 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-md">
-                Rekomendowany – Automatyzacja
+                Rekomendowany B2B
               </div>
 
               <div>
