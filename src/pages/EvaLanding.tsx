@@ -22,7 +22,10 @@ import {
   Menu,
   Globe,
   Mic,
-  Shield
+  Shield,
+  Code,
+  Copy,
+  Check
 } from 'lucide-react';
 
 export default function EvaLanding() {
@@ -30,6 +33,29 @@ export default function EvaLanding() {
   const SHOW_BETA_BANNER = true;
   const [isBannerOpen, setIsBannerOpen] = useState(SHOW_BETA_BANNER);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Widget copy states
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
+
+  const iframeSnippet = `<iframe src="https://beautyvoice-bff.web.app/widget/callback" width="100%" height="340" frameborder="0" style="border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 420px; width: 100%; border: 1px solid #e5e7eb;"></iframe>`;
+  const widgetUrl = "https://beautyvoice-bff.web.app/widget/callback";
+
+  const handleCopyCode = () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(iframeSnippet);
+    }
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2500);
+  };
+
+  const handleCopyLink = () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(widgetUrl);
+    }
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2500);
+  };
 
   // FAQ accordion state
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -372,6 +398,121 @@ export default function EvaLanding() {
               <CheckCircle2 size={15} className="text-gold-600" />
               <span>Zgodność z RODO (DPA)</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3.5 WIDŻET ZEWNĘTRZNY - LIVE CALLBACK W 30 SEKUND */}
+      <section id="widzet" className="py-16 md:py-20 bg-gradient-to-b from-surface-50 via-white to-surface-50/70 border-b border-surface-200/80">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* LEWA KOLUMNA: OPIS, CTA I KOD OSADZENIA */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-100/90 border border-gold-300 text-gold-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+                <Sparkles size={14} className="text-gold-600" />
+                <span>Widżet Zewnętrzny</span>
+              </div>
+
+              <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-surface-900 mb-4 leading-tight">
+                Widżet „Live Callback w 30 sekund”
+              </h2>
+
+              <p className="text-surface-600 text-sm sm:text-base leading-relaxed mb-6">
+                Zainstaluj interaktywny formularz na dowolnej stronie zewnętrznej (WordPress, Wix, Webflow, sklep online). Gdy klient wpisze numer, asystent zadzwoni do niego automatycznie w 30 sekund.
+              </p>
+
+              {/* PRZYCISKI AKCJI */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <a
+                  href="https://beautyvoice-bff.web.app/widget/callback"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gold-500 hover:bg-gold-600 text-surface-900 font-bold text-sm transition-all shadow-md hover:shadow-lg hover:scale-[1.02]"
+                >
+                  <span>Otwórz widżet w nowej karcie</span>
+                  <ExternalLink size={16} />
+                </a>
+
+                <button
+                  type="button"
+                  onClick={handleCopyLink}
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white hover:bg-surface-100 text-surface-800 font-semibold text-sm border border-surface-300 transition-all shadow-sm hover:border-gold-400"
+                >
+                  {copiedLink ? (
+                    <>
+                      <Check size={16} className="text-emerald-600" />
+                      <span className="text-emerald-700 font-semibold">Skopiowano link!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={16} className="text-surface-600" />
+                      <span>Kopiuj link</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* BLOK Z KODEM IFRAME */}
+              <div className="bg-surface-900 rounded-2xl p-4 sm:p-5 text-white border border-surface-800 shadow-xl">
+                <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-gold-400 flex items-center gap-1.5">
+                    <Code size={14} className="shrink-0" />
+                    <span>Kod osadzenia &lt;iframe&gt; na stronę WWW</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleCopyCode}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-800 hover:bg-surface-700 text-surface-200 hover:text-white text-xs font-medium border border-surface-700 transition-colors shrink-0"
+                  >
+                    {copiedCode ? (
+                      <>
+                        <Check size={13} className="text-emerald-400" />
+                        <span className="text-emerald-400 font-semibold">Skopiowano!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={13} />
+                        <span>Kopiuj kod</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <div className="bg-surface-950 rounded-xl p-3 font-mono text-xs text-gold-200/90 break-all overflow-x-auto select-all border border-surface-800/60 leading-relaxed">
+                  {iframeSnippet}
+                </div>
+              </div>
+            </div>
+
+            {/* PRAWA KOLUMNA: PODGLĄD NA ŻYWO WIDŻETU */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-center">
+              <div className="w-full max-w-[430px] bg-white rounded-3xl p-4 sm:p-5 shadow-2xl border border-surface-200/90 flex flex-col items-center">
+                <div className="flex items-center justify-between w-full mb-3 pb-2.5 border-b border-surface-100 text-xs font-medium text-surface-600">
+                  <span className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="font-semibold text-surface-800">Podgląd na żywo widżetu</span>
+                  </span>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-100 text-surface-600">30s Callback</span>
+                </div>
+                <div className="w-full flex justify-center overflow-hidden">
+                  <iframe
+                    src="https://beautyvoice-bff.web.app/widget/callback"
+                    width="100%"
+                    height="340"
+                    frameBorder="0"
+                    style={{
+                      borderRadius: '20px',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+                      maxWidth: '420px',
+                      width: '100%',
+                      border: '1px solid #e5e7eb'
+                    }}
+                    title="EVA Live Callback Widget"
+                  />
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -725,57 +866,57 @@ export default function EvaLanding() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
             {/* PAKIET OSOBISTY AI (EXECUTIVE) */}
-            <div className="bg-white rounded-3xl p-8 sm:p-9 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
               <div>
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="font-playfair text-2xl font-bold text-surface-900">Pakiet Osobisty</h3>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gold-100 text-gold-800">
+                  <h3 className="font-playfair text-xl sm:text-2xl font-bold text-surface-900">Pakiet Osobisty</h3>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-gold-100 text-gold-800">
                     Sekretarka Executive
                   </span>
                 </div>
-                <p className="text-surface-500 text-sm mb-6 min-h-[40px]">
+                <p className="text-surface-500 text-xs sm:text-sm mb-6 min-h-[44px]">
                   Dla przedsiębiorców, menedżerów, prawników i lekarzy. Chroni Twój czas skupienia (Deep Work) i bezwzględną prywatność.
                 </p>
                 <div className="mb-6">
-                  <span className="font-playfair text-4xl sm:text-5xl font-bold text-surface-900">149 zł</span>
-                  <span className="text-surface-500 text-sm ml-2">netto / miesiąc</span>
-                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min (naliczane sekundowo)</div>
+                  <span className="font-playfair text-3xl sm:text-4xl font-bold text-surface-900">149 zł</span>
+                  <span className="text-surface-500 text-xs sm:text-sm ml-2">netto / mc</span>
+                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min</div>
                 </div>
 
-                <div className="space-y-3 text-sm text-surface-700 mb-8">
-                  <div className="flex items-start gap-3 font-semibold text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span>1 dedykowany techniczny numer telefonu komórkowego</span>
+                <div className="space-y-2.5 text-xs sm:text-sm text-surface-700 mb-8">
+                  <div className="flex items-start gap-2.5 font-semibold text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span>1 dedykowany numer techniczny komórkowy</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Dwuetapowe inteligentne powitanie</strong> (ochrona tożsamości)</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Dwuetapowe inteligentne powitanie</strong></span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Rozpoznawanie kontaktów VIP</strong> (Rodzina, Wspólnik, Klient)</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Rozpoznawanie kontaktów VIP</strong></span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Autoryzacja kodem PIN</strong> z telefonu właściciela (sprawy poufne)</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Autoryzacja kodem PIN</strong> z telefonu</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Baza wiedzy ogólnej oraz poufnej</strong> (chronionej PIN-em)</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Baza wiedzy poufnej</strong> (chroniona PIN-em)</span>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Raporty dnia:</strong> poranny push oraz podsumowanie głosowe i e-mail</span>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Raporty dnia:</strong> poranny push, głos i e-mail</span>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Czas skupienia (Deep Work)</strong> z automatycznym filtrowaniem połączeń</span>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Czas skupienia (Deep Work)</strong></span>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Rejestr ważnych dat</strong> (urodziny, rocznice, polisy)</span>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Rejestr ważnych dat</strong> (urodziny, rocznice)</span>
                   </div>
                 </div>
               </div>
@@ -791,59 +932,122 @@ export default function EvaLanding() {
               </a>
             </div>
 
-            {/* PAKIET STANDARD */}
-            <div className="bg-white rounded-3xl p-8 sm:p-9 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
+            {/* PAKIET OSOBISTY EKSPERT */}
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
               <div>
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="font-playfair text-2xl font-bold text-surface-900">Pakiet Standard</h3>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-surface-100 text-surface-700">
+                  <h3 className="font-playfair text-xl sm:text-2xl font-bold text-surface-900">Osobisty Ekspert</h3>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-gold-100 text-gold-800">
+                    Doradztwo / Kancelarie
+                  </span>
+                </div>
+                <p className="text-surface-500 text-xs sm:text-sm mb-6 min-h-[44px]">
+                  Dla kancelarii, doradców i rzeczoznawców. Wywiad wstępny ze sprawdzaniem budżetu, filtr zasięgu i natychmiastowe uczenie z rozmów.
+                </p>
+                <div className="mb-6">
+                  <span className="font-playfair text-3xl sm:text-4xl font-bold text-surface-900">349 zł</span>
+                  <span className="text-surface-500 text-xs sm:text-sm ml-2">netto / mc</span>
+                  <div className="text-[11px] text-surface-500 font-medium mt-1">300 minut w cenie (tylko 0,50 zł / min)</div>
+                </div>
+
+                <div className="space-y-2.5 text-xs sm:text-sm text-surface-700 mb-8">
+                  {/* WYRÓŻNIONY BANER "WSZYSTKO Z PAKIETU OSOBISTEGO, ORAZ:" */}
+                  <div className="py-2 px-3 rounded-xl bg-gold-100/80 border border-gold-300 text-gold-900 text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 my-2">
+                    <Sparkles size={14} className="text-gold-600 shrink-0" />
+                    <span>Wszystko z Pakietu Osobistego, oraz:</span>
+                  </div>
+
+                  <div className="flex items-start gap-2.5 font-semibold text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>300 minut rozmów</strong> w pakiecie co miesiąc</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Kwalifikacja Sprawy</strong> i Budżetu klienta</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Filtr Zasięgu Działania</strong> (rejon obsługi)</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>1-kliknięcie SMS</strong> Odrzucenia z szablonu</span>
+                  </div>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span>Moduł <strong>„Audyt Rozmów i Doszkalanie”</strong> (1-click FAQ)</span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span>Potwierdzenia spotkań (SMS &amp; Telefon)</span>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="https://beautyvoice-bff.web.app/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+              >
+                <span>Wybierz Osobisty Ekspert</span>
+                <ArrowRight size={16} />
+              </a>
+            </div>
+
+            {/* PAKIET STANDARD */}
+            <div className="bg-white rounded-3xl p-6 sm:p-7 border border-surface-200 shadow-card-soft flex flex-col justify-between hover:border-gold-300 transition-all">
+              <div>
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-playfair text-xl sm:text-2xl font-bold text-surface-900">Pakiet Standard</h3>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-surface-100 text-surface-700">
                     Podstawowa Recepcja
                   </span>
                 </div>
-                <p className="text-surface-500 text-sm mb-6 min-h-[40px]">
-                  Idealne rozwiązanie dla jednoosobowych działalności i gabinetów chcących profesjonalnie zabezpieczyć nieodebrane telefony i rezerwacje.
+                <p className="text-surface-500 text-xs sm:text-sm mb-6 min-h-[44px]">
+                  Idealne rozwiązanie dla salonów i gabinetów chcących zabezpieczyć nieodebrane telefony i rezerwacje.
                 </p>
                 <div className="mb-6">
-                  <span className="font-playfair text-4xl sm:text-5xl font-bold text-surface-900">199 zł</span>
-                  <span className="text-surface-500 text-sm ml-2">netto / miesiąc</span>
-                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min (naliczane sekundowo)</div>
+                  <span className="font-playfair text-3xl sm:text-4xl font-bold text-surface-900">199 zł</span>
+                  <span className="text-surface-500 text-xs sm:text-sm ml-2">netto / mc</span>
+                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min</div>
                 </div>
 
-                <div className="space-y-3 text-sm text-surface-700 mb-8">
-                  <div className="flex items-start gap-3 font-semibold text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>100 darmowych minut</strong> na rozmowy z klientami co miesiąc</span>
+                <div className="space-y-2.5 text-xs sm:text-sm text-surface-700 mb-8">
+                  <div className="flex items-start gap-2.5 font-semibold text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>100 darmowych minut</strong> w pakiecie co miesiąc</span>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
                     <span>1 dedykowany techniczny numer telefonu</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>4 naturalne głosy AI</strong> do wyboru (2 żeńskie i 2 męskie)</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>4 naturalne głosy AI</strong> (2 żeńskie i 2 męskie)</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Obsługa ponad 140 języków</strong> (automatyczna detekcja)</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Ponad 140 języków</strong> (detekcja automatyczna)</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Baza Wiedzy AI</strong> ze zdjęć cenników i plików PDF</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Baza Wiedzy AI</strong> ze zdjęć cenników i PDF</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Grafiki pracowników</strong> i obsługa świąt / dni wolnych</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Grafiki pracowników</strong> i dni wolne</span>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span>Automatyczne umawianie terminów w kalendarzu</span>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span>Automatyczne umawianie w kalendarzu</span>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span>Potwierdzenia SMS do klientów po rezerwacji</span>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span>Potwierdzenia SMS po rezerwacji</span>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
                     <span>Samodzielna konfiguracja w 10 minut</span>
                   </div>
                 </div>
@@ -861,31 +1065,31 @@ export default function EvaLanding() {
             </div>
 
             {/* PAKIET PREMIUM (REKOMENDOWANY) */}
-            <div className="bg-gradient-to-b from-white to-gold-50/40 rounded-3xl p-8 sm:p-9 border-2 border-gold-400 shadow-xl flex flex-col justify-between relative">
-              <div className="absolute -top-3.5 right-6 sm:right-8 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-3 sm:px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-md">
-                Rekomendowany – Pełna Automatyzacja
+            <div className="bg-gradient-to-b from-white to-gold-50/40 rounded-3xl p-6 sm:p-7 border-2 border-gold-400 shadow-xl flex flex-col justify-between relative">
+              <div className="absolute -top-3.5 right-4 sm:right-6 bg-gradient-to-r from-gold-500 to-gold-600 text-white px-3 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-md">
+                Rekomendowany – Automatyzacja
               </div>
 
               <div>
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="font-playfair text-2xl font-bold text-surface-900">Pakiet Premium</h3>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gold-100 text-gold-800">
-                    Maksymalizacja Przychodów
+                  <h3 className="font-playfair text-xl sm:text-2xl font-bold text-surface-900">Pakiet Premium</h3>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-gold-100 text-gold-800">
+                    Maksymalizacja Zysków
                   </span>
                 </div>
-                <p className="text-surface-600 text-sm mb-6 min-h-[40px]">
-                  Dla firm, które chcą aktywnie zapełniać kalendarz, badać opinie i wyeliminować zapominalskich klientów (No-Show).
+                <p className="text-surface-600 text-xs sm:text-sm mb-6 min-h-[44px]">
+                  Dla firm, które chcą aktywnie zapełniać kalendarz, badać opinie i wyeliminować brak obecności klientów.
                 </p>
                 <div className="mb-6">
-                  <span className="font-playfair text-4xl sm:text-5xl font-bold text-surface-900">399 zł</span>
-                  <span className="text-surface-500 text-sm ml-2">netto / miesiąc</span>
-                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min (naliczane sekundowo)</div>
+                  <span className="font-playfair text-3xl sm:text-4xl font-bold text-surface-900">399 zł</span>
+                  <span className="text-surface-500 text-xs sm:text-sm ml-2">netto / mc</span>
+                  <div className="text-[11px] text-surface-400 mt-1">kolejne minuty: 0,60 zł / min</div>
                 </div>
 
-                <div className="space-y-3 text-sm text-surface-800 mb-8">
-                  <div className="flex items-start gap-3 font-semibold text-gold-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>300 darmowych minut</strong> na rozmowy w pakiecie co miesiąc</span>
+                <div className="space-y-2.5 text-xs sm:text-sm text-surface-800 mb-8">
+                  <div className="flex items-start gap-2.5 font-semibold text-gold-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>300 darmowych minut</strong> w pakiecie co miesiąc</span>
                   </div>
 
                   {/* WYRÓŻNIONY BANER "WSZYSTKO W STANDARD I DODATKOWO" */}
@@ -894,25 +1098,25 @@ export default function EvaLanding() {
                     <span>Wszystko z pakietu Standard, oraz:</span>
                   </div>
 
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Wypełnianie okienek (Last Minute)</strong> – natychmiastowe ratowanie odwołanych terminów</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Wypełnianie okienek (Last Minute)</strong></span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Badanie satysfakcji (NPS)</strong> – automatyczne zbieranie opinii po wizycie</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Badanie satysfakcji (NPS)</strong> po wizycie</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Reaktywacja bazy 90+ dni</strong> – powrót dawnych klientów do firmy</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Reaktywacja bazy 90+ dni</strong></span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Telefoniczne potwierdzanie wizyt dzień wcześniej</strong> – asystent sam dzwoni (zero „no-show”)</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Telefoniczne potwierdzanie</strong> wizyt dzień wcześniej</span>
                   </div>
-                  <div className="flex items-start gap-3 font-medium text-surface-900">
-                    <CheckCircle2 size={18} className="text-gold-600 shrink-0 mt-0.5" />
-                    <span><strong>Wielokanałowość</strong> – do 5 jednoczesnych rozmów naraz bez sygnału zajętości</span>
+                  <div className="flex items-start gap-2.5 font-medium text-surface-900">
+                    <CheckCircle2 size={17} className="text-gold-600 shrink-0 mt-0.5" />
+                    <span><strong>Wielokanałowość</strong> – do 5 rozmów naraz</span>
                   </div>
                 </div>
               </div>

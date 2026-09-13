@@ -317,6 +317,9 @@ export default function EvaTerms() {
                       <strong>Plan Osobisty AI (Executive):</strong> 149 zł netto / miesiąc (zawiera 100 darmowych minut połączeń, 1 dedykowany numer GSM, ochronę prywatności i dwuetapowe powitanie z tarczą przed telemarketerami, bazę kontaktów VIP z priorytetowymi alertami Push i E-mail, weryfikację kodem PIN do Panelu Właściciela i wiedzy poufnej, poranne raporty dnia oraz harmonogram blokad skupienia Deep Work).
                     </li>
                     <li>
+                      <strong>Plan Osobisty Ekspert:</strong> 349 zł netto / miesiąc (zawiera 300 minut rozmów w pakiecie, stawkę 0,50 zł / min za kolejne minuty, dedykowany dla doradztwa i kancelarii, moduł wywiadu wstępnego z kwalifikacją sprawy i budżetu klienta, filtr terytorialnego zasięgu działania, 1-kliknięcie SMS odrzucenia z szablonu, moduł „Audyt Rozmów i Doszkalanie” 1-click FAQ, potwierdzenia spotkań SMS i telefoniczne oraz pełną funkcjonalność Planu Osobistego).
+                    </li>
+                    <li>
                       <strong>Plan Standard:</strong> 199 zł netto / miesiąc (zawiera 100 darmowych minut połączeń, 1 numer techniczny, 4 naturalne głosy AI, obsługę ponad 140 języków, rezerwacje kalendarzowe, powiadomienia SMS, Bazę Wiedzy AI ze zdjęć i plików PDF oraz obsługę grafików pracowników i dni wolnych).
                     </li>
                     <li>
