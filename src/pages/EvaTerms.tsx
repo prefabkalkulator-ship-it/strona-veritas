@@ -10,7 +10,8 @@ import {
   ExternalLink,
   ArrowUp,
   CheckCircle2,
-  AlertTriangle
+  AlertTriangle,
+  ShieldCheck
 } from 'lucide-react';
 
 export default function EvaTerms() {
@@ -228,24 +229,50 @@ export default function EvaTerms() {
                   <strong>Przeznaczenie Numeru Technicznego:</strong> Przydzielony w pakiecie numer techniczny służy <strong>wyłącznie do odbioru połączeń przychodzących przekierowanych z publicznego numeru Usługobiorcy</strong>.
                 </li>
                 <li>
-                  <strong>Bezwzględne Zakazy:</strong>
-                  <ul className="list-disc pl-5 mt-2 space-y-1.5 text-surface-600">
-                    <li>Zabrania się podawania numeru technicznego do publicznej wiadomości jako głównego numeru kontaktowego firmy.</li>
-                    <li>Bezwzględnie zabrania się wykorzystywania platformy, numeru technicznego lub bramek SMS do prowadzenia niezamówionego telemarketingu (tzw. "cold calling"), spamowania, phishingu lub jakichkolwiek działań naruszających obowiązujące przepisy prawa.</li>
+                  <strong>Zakaz Wykorzystywania do Celów Niezgodnych z Prawem:</strong>
+                  <p className="mt-1 text-surface-600">
+                    Usługobiorca przyjmuje pełną odpowiedzialność za treść i cel połączeń przychodzących kierowanych do Platformy. Usługodawca zastrzega sobie prawo do natychmiastowego zablokowania konta Usługobiorcy i wypowiedzenia umowy w trybie natychmiastowym, jeżeli stwierdzi, że Platforma jest używana do:
+                  </p>
+                  <ul className="list-disc pl-5 mt-2 space-y-1 text-surface-600">
+                    <li>Spamowania i phishingu,</li>
+                    <li>Przestępstw oszustwa,</li>
+                    <li>Odbierania połączeń o charakterze nielegalnym lub naruszającym dobre obyczaje,</li>
+                    <li>Prowadzenia niezamówionego telemarketingu (tzw. "cold calling") lub podawania numeru technicznego do publicznej wiadomości.</li>
                   </ul>
                 </li>
+                <li>
+                  <strong>Zwolnienie z odpowiedzialności (Indemnity):</strong>
+                  <div className="bg-gold-50/80 rounded-2xl p-5 border border-gold-300 text-gold-950 text-sm mt-2">
+                    <div className="flex items-center gap-2 font-bold mb-2 text-gold-900">
+                      <AlertTriangle size={18} className="text-gold-600" />
+                      <span>Klauzula Zwolnienia z Odpowiedzialności</span>
+                    </div>
+                    <p className="leading-relaxed text-surface-800">
+                      Usługobiorca zgadza się w pełni zwolnić Usługodawcę, jego pracowników oraz partnerów technologicznych z wszelkiej odpowiedzialności finansowej, cywilnej i karnej wynikającej z roszczeń osób trzecich w związku z nieodpowiednim lub bezprawnym zarządzaniem ruchem telefonicznym przez Usługobiorcę.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <strong>Weryfikacja Bezpieczeństwa i Zgodności Bazy Wiedzy (FAQ) oraz Instrukcji AI:</strong>
+                  <div className="mt-2 space-y-3 text-surface-700">
+                    <p className="leading-relaxed">
+                      <strong>a) Cel audytu prewencyjnego:</strong> W celu zapobiegania naruszeniom powszechnie obowiązującego prawa, wyłudzeniom, oszustwom, zjawisku phishingu oraz bezprawnemu świadczeniu usług regulowanych (w szczególności niedozwolonych porad medycznych, farmakologicznych, prawnych lub finansowych), <strong>Usługodawca zastrzega sobie prawo do zautomatyzowanego oraz incydentalnego audytu wyłącznie zawartości wprowadzonej przez Usługobiorcę do Bazy Wiedzy (FAQ), profilu działalności oraz instrukcji konfiguracyjnych asystenta głosowego</strong>.
+                    </p>
+                    <div className="bg-emerald-50/70 rounded-2xl p-4 sm:p-5 border border-emerald-200 text-emerald-950 text-sm">
+                      <div className="flex items-center gap-2 font-bold mb-1.5 text-emerald-900">
+                        <ShieldCheck size={18} className="text-emerald-600 shrink-0" />
+                        <span>b) Gwarancja Prywatności i Tajemnicy Telekomunikacyjnej</span>
+                      </div>
+                      <p className="leading-relaxed text-surface-800 text-xs sm:text-sm">
+                        Monitoring, o którym mowa w lit. a, ma charakter wyłącznie prewencyjny i <strong>kategorycznie nie obejmuje ani nie dopuszcza odsłuchiwania prowadzonych rozmów telefonicznych</strong>, wglądu w prywatne bilingi połączeń czy analizy treści zapytań dzwoniących klientów końcowych. Wszelkie dane transkrypcyjne i audio z połączeń podlegają bezwzględnej ochronie w ramach Umowy Powierzenia Przetwarzania Danych Osobowych (§ 4 Regulaminu) oraz przepisów o tajemnicy telekomunikacyjnej.
+                      </p>
+                    </div>
+                    <p className="leading-relaxed">
+                      <strong>c) Uprawnienia Usługodawcy w razie naruszeń:</strong> W przypadku wykrycia w Bazie Wiedzy (FAQ) lub profilu treści naruszających Regulamin lub powszechnie obowiązujące przepisy prawa, Usługodawca ma prawo wezwać Usługobiorcę do ich niezwłocznej modyfikacji, zablokować określone odpowiedzi asystenta lub czasowo zawiesić świadczenie usługi do momentu usunięcia naruszenia.
+                    </p>
+                  </div>
+                </li>
               </ol>
-
-              {/* KLAUZULA INDEMNITY */}
-              <div className="bg-gold-50/80 rounded-2xl p-5 border border-gold-300 text-gold-950 text-sm mt-4">
-                <div className="flex items-center gap-2 font-bold mb-2 text-gold-900">
-                  <AlertTriangle size={18} className="text-gold-600" />
-                  <span>4. Klauzula Zwolnienia z Odpowiedzialności (Indemnity)</span>
-                </div>
-                <p className="leading-relaxed text-surface-800">
-                  Usługobiorca zobowiązuje się zwolnić Usługodawcę, jego pracowników oraz partnerów technologicznych z wszelkiej odpowiedzialności odszkodowawczej i prawnej w przypadku roszczeń osób trzecich wynikających z bezprawnego lub sprzecznego z Regulaminem wykorzystania połączeń telefonicznych przez Usługobiorcę.
-                </p>
-              </div>
             </section>
 
             {/* § 3 */}
