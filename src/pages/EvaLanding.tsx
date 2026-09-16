@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import EvaScrollytelling from '../components/EvaScrollytelling';
 import {
   Phone,
-  CalendarCheck,
   Sparkles,
   ShieldCheck,
-  Clock,
   MessageSquare,
   Users,
   CheckCircle2,
@@ -19,10 +18,7 @@ import {
   Award,
   Lock,
   Mail,
-  Menu,
-  Globe,
-  Mic,
-  Shield
+  Menu
 } from 'lucide-react';
 
 export default function EvaLanding() {
@@ -99,21 +95,21 @@ export default function EvaLanding() {
       {isBannerOpen && (
         <aside
           aria-label="Promocja wczesnych testów"
-          className="bg-gradient-to-r from-surface-900 via-surface-800 to-surface-900 text-white py-2 px-4 text-xs md:text-sm border-b border-gold-500/30 sticky top-0 z-50 shadow-md backdrop-blur-md"
+          className="bg-gradient-to-r from-surface-900 via-surface-800 to-surface-900 text-white py-1.5 sm:py-2 px-3 sm:px-4 text-xs md:text-sm border-b border-gold-500/30 relative z-50 shadow-sm"
         >
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-gold-500 text-surface-900 uppercase tracking-wider">
                 Oferta Limitowana
               </span>
               <p className="font-medium text-surface-100 text-xs md:text-sm">
-                🎉 <strong className="text-gold-300">Program Wczesnych Testów:</strong> Pierwsze 5 użytkowników otrzymują miesiąc abonamentu całkowicie bezpłatnie!
+                🎉 <strong className="text-gold-300">Program Wczesnych Testów:</strong> Pierwsze 5 firm otrzymuje miesiąc abonamentu bezpłatnie!
               </p>
             </div>
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-2 shrink-0">
               <a
                 href="mailto:support@veritas-app.com?subject=Zg%C5%82oszenie%20do%20Programu%20Wczesnych%20Test%C3%B3w%20EVA&body=Dzie%C5%84%20dobry,%0A%0AChcieliby%C5%9Bmy%20zg%C5%82osi%C4%87%20si%C4%99%20do%20bezp%C5%82atnego%20testowania%20asystenta%20EVA%20(miesi%C4%85c%20gratis).%0A%0AImi%C4%99%20i%20Nazwisko%20/%20Firma:%20%0AWybrany%20pakiet%20(Osobisty%20/%20Standard%20/%20Premium):%20%0ANumer%20telefonu:%20"
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500 hover:bg-gold-600 text-surface-900 font-semibold text-xs transition-all shadow-sm"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500 hover:bg-gold-600 text-surface-900 font-semibold text-xs transition-all shadow-sm"
               >
                 <Mail size={13} />
                 <span>Zgłoś się do testów</span>
@@ -133,20 +129,20 @@ export default function EvaLanding() {
 
       {/* 2. NAWIGACJA GŁÓWNA - WYRÓWNANA ŚRODKIEM W PIONIE I POZIOMIE */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-surface-200 shadow-sm transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-1.5 sm:gap-2">
           
           {/* LOGOTYP LEWA STRONA */}
-          <Link to="/eva" className="flex items-center gap-2.5 shrink-0 group w-[200px] xl:w-[220px]">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-100 to-gold-200 border border-gold-300/80 flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
+          <Link to="/eva" className="flex items-center gap-2 sm:gap-2.5 shrink-0 group">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-gold-100 to-gold-200 border border-gold-300/80 flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
               <img src="/eva-headset-gold.png" alt="EVA Logo" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col">
-              <span className="font-playfair text-xl md:text-2xl font-bold tracking-tight text-surface-900 leading-tight">
+              <span className="font-playfair text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-surface-900 leading-tight">
                 E<span className="text-[0.65em] font-sans font-semibold text-surface-600">asy</span>
                 V<span className="text-[0.65em] font-sans font-semibold text-surface-600">oice</span>
                 A<span className="text-[0.65em] font-sans font-semibold text-surface-600">ssistant</span>
               </span>
-              <span className="text-[9px] uppercase font-bold tracking-widest text-gold-700 font-inter">
+              <span className="hidden sm:block text-[9px] uppercase font-bold tracking-widest text-gold-700 font-inter">
                 Inteligentny Asystent AI
               </span>
             </div>
@@ -203,7 +199,7 @@ export default function EvaLanding() {
           </nav>
 
           {/* PRAWA STRONA: PRZYCISKI AKCJI */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <a
               href="tel:+48343433088"
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gold-50 border border-gold-300 text-gold-800 text-xs font-bold hover:bg-gold-100 transition-all shadow-sm whitespace-nowrap"
@@ -217,19 +213,19 @@ export default function EvaLanding() {
               href="https://beautyvoice-bff.web.app/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl bg-surface-900 hover:bg-surface-800 text-white text-xs md:text-sm font-semibold transition-all shadow-sm hover:shadow-md whitespace-nowrap"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-surface-900 hover:bg-surface-800 text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md whitespace-nowrap"
             >
               <span>Załóż konto</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={13} className="hidden sm:inline" />
             </a>
 
-            {/* HAMBURGER MENU DLA MNIEJSZYCH EKRANÓW */}
+            {/* HAMBURGER MENU DLA MNIEJSZYCH EKRANÓW - BEZ UCIĘĆ */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-surface-700 hover:text-gold-600 rounded-lg transition-colors"
+              className="lg:hidden p-1.5 sm:p-2 text-surface-700 hover:text-gold-600 rounded-lg transition-colors shrink-0"
               aria-label="Menu nawigacyjne"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -299,141 +295,10 @@ export default function EvaLanding() {
         )}
       </header>
 
-      {/* 3. HERO SECTION */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-gold-50/40 via-surface-50 to-surface-50">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-br from-gold-200/30 to-gold-400/10 rounded-full blur-3xl -z-10 pointer-events-none" />
+      {/* 3. HERO SCROLLYTELLING 3D SECTION */}
+      <EvaScrollytelling />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* BADGE */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-100/80 border border-gold-300/80 text-gold-900 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-            <Sparkles size={14} className="text-gold-600" />
-            <span>Rewolucja w obsłudze klienta i zarządzaniu kalendarzem</span>
-          </div>
 
-          {/* H1 PLAYFAIR DISPLAY - BEZ UCIĘCIA LITERY 'g' */}
-          <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-surface-900 leading-snug sm:leading-tight md:leading-[1.2] tracking-tight max-w-4xl mx-auto mb-6 relative z-20">
-            Nigdy więcej nieodebranych telefonów i pustych okienek w kalendarzu.
-            <span className="block mt-2 sm:mt-3 pb-3 pt-1 text-gold-700 sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-r sm:from-gold-700 sm:via-gold-600 sm:to-gold-500 overflow-visible">
-              Twój wirtualny pracownik AI odbiera i dba o grafik 24/7.
-            </span>
-          </h1>
-
-          {/* PODTYTUŁ */}
-          <p className="font-inter text-base sm:text-lg md:text-xl text-surface-600 max-w-3xl mx-auto mb-10 leading-relaxed relative z-10">
-            EVA odbiera połączenia, gdy pracujesz z klientem, masz wolne lub prowadzisz samochód. Rozmawia w ponad 140 językach, odpowiada na pytania o cennik i natychmiast wpisuje rezerwację. W planie Premium sama dzwoni, by potwierdzić wizyty i zapełnia nagłe luki w grafiku.
-          </p>
-
-          {/* GŁÓWNE PRZYCISKI AKCJI (2 CTA) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            {/* CTA 1: ZADZWOŃ DEMO */}
-            <a
-              href="tel:+48343433088"
-              className="w-full sm:w-auto inline-flex flex-col items-center justify-center px-7 py-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold text-base transition-all shadow-lg hover:shadow-xl hover:scale-[1.02] group"
-            >
-              <div className="flex items-center gap-2.5">
-                <PhoneCall size={20} className="group-hover:rotate-12 transition-transform" />
-                <span>Zadzwoń do EVA DEMO: +48 343 433 088</span>
-              </div>
-              <span className="text-[11px] font-normal text-gold-100 mt-1 opacity-90">
-                Przetestuj na żywo! Zapytaj o cennik, pakiety i jak działa
-              </span>
-            </a>
-
-            {/* CTA 2: ZAŁÓŻ KONTO */}
-            <a
-              href="https://beautyvoice-bff.web.app/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-base transition-all shadow-md hover:shadow-lg hover:scale-[1.02]"
-            >
-              <span>🚀 Załóż konto w aplikacji</span>
-            </a>
-          </div>
-
-          {/* SOCIAL PROOF & KLUCZOWE ATUTY */}
-          <div className="pt-6 flex flex-wrap items-center justify-center gap-5 text-xs text-surface-600 font-medium">
-            <div className="flex items-center gap-1.5 bg-white/70 px-3 py-1.5 rounded-full border border-surface-200">
-              <Globe size={15} className="text-gold-600" />
-              <span>Ponad 140 języków (automatyczna detekcja)</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/70 px-3 py-1.5 rounded-full border border-surface-200">
-              <Mic size={15} className="text-gold-600" />
-              <span>4 głosy AI (2 żeńskie i 2 męskie)</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/70 px-3 py-1.5 rounded-full border border-surface-200">
-              <CheckCircle2 size={15} className="text-gold-600" />
-              <span>Konfiguracja w 10 minut</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/70 px-3 py-1.5 rounded-full border border-surface-200">
-              <CheckCircle2 size={15} className="text-gold-600" />
-              <span>Bez zmiany numeru telefonu</span>
-            </div>
-            <div className="flex items-center gap-1.5 bg-white/70 px-3 py-1.5 rounded-full border border-surface-200">
-              <CheckCircle2 size={15} className="text-gold-600" />
-              <span>Zgodność z RODO (DPA)</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3.5 WIDŻET ZEWNĘTRZNY - LIVE CALLBACK W 30 SEKUND */}
-      {/* 3.5 WIDŻET LIVE CALLBACK W 30 SEKUND */}
-      <section id="widzet" className="py-14 md:py-20 bg-gradient-to-b from-surface-50 via-white to-surface-50/70 border-b border-surface-200/80">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-100/90 border border-gold-300 text-gold-900 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
-            <Sparkles size={14} className="text-gold-600" />
-            <span>Test Na Żywo</span>
-          </div>
-
-          <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-surface-900 mb-4 leading-tight">
-            Widżet „Live Callback w 30 sekund”
-          </h2>
-
-          <p className="text-surface-600 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
-            Wpisz swój numer telefonu poniżej – asystent EVA zadzwoni do Ciebie automatycznie w 30 sekund, aby zaprezentować możliwości rozmowy na żywo.
-          </p>
-
-          <div className="flex flex-col items-center justify-center">
-            <div className="w-full max-w-[440px] bg-white rounded-3xl p-3 sm:p-5 shadow-2xl border border-surface-200/90 flex flex-col items-center">
-              <div className="flex items-center justify-between w-full mb-3 pb-2.5 border-b border-surface-100 text-xs font-medium text-surface-600">
-                <span className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="font-semibold text-surface-800">Formularz natychmiastowego połączenia</span>
-                </span>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-100 text-surface-600">30s Callback</span>
-              </div>
-              <div className="w-full flex justify-center overflow-hidden">
-                <iframe
-                  src="https://beautyvoice-bff.web.app/widget/callback"
-                  width="100%"
-                  height="340"
-                  frameBorder="0"
-                  style={{
-                    borderRadius: '20px',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                    maxWidth: '420px',
-                    width: '100%',
-                    border: '1px solid #e5e7eb'
-                  }}
-                  title="Widżet Live Callback w 30 sekund"
-                />
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <a
-                href="https://beautyvoice-bff.web.app/widget/callback"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-gold-700 transition-colors"
-              >
-                <span>Otwórz widżet w nowej karcie</span>
-                <ExternalLink size={13} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 4. SEKCJA DEMONSTRACYJNA Z WIDEO SHORTS (9:16) ORAZ TESTEM TELEFONICZNYM */}
       <section id="demo" className="py-16 md:py-24 bg-white border-y border-surface-200/80">
@@ -526,106 +391,7 @@ export default function EvaLanding() {
         </div>
       </section>
 
-      {/* 5. FILAROWE KORZYŚCI DLA BIZNESU (ROZBUDOWANE O JĘZYKI I GŁOSY) */}
-      <section id="korzysci" className="py-20 md:py-28 bg-surface-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-gold-700 font-bold text-xs uppercase tracking-widest block mb-2 font-inter">
-              Dlaczego EVA to inwestycja, która natychmiast się zwraca
-            </span>
-            <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-surface-900 tracking-tight">
-              Filary spokoju i większych zysków Twojej firmy
-            </h2>
-            <p className="text-surface-600 text-base mt-4">
-              Zamiast rozpraszać się dzwonkiem telefonu w trakcie pracy z klientem, zyskujesz dedykowaną wirtualną recepcję, która nie bierze urlopów i nigdy nie ma gorszego dnia.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* FILAR 1 */}
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-surface-200/80 shadow-card-soft hover:shadow-card-hover transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-600 mb-6 group-hover:scale-110 transition-transform">
-                <Clock size={28} />
-              </div>
-              <h3 className="font-playfair text-xl font-bold text-surface-900 mb-3">
-                Dostępność 24/7 – Zero nieodebranych telefonów
-              </h3>
-              <p className="text-surface-600 text-sm leading-relaxed">
-                Aż 68% klientów, którzy nie dodzwonią się za pierwszym razem, natychmiast dzwoni do Twojej konkurencji. EVA odbiera telefon w ułamku sekundy, nawet w niedziele, w nocy lub gdy masz zajęte ręce.
-              </p>
-            </div>
-
-            {/* FILAR 2 */}
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-surface-200/80 shadow-card-soft hover:shadow-card-hover transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-600 mb-6 group-hover:scale-110 transition-transform">
-                <CalendarCheck size={28} />
-              </div>
-              <h3 className="font-playfair text-xl font-bold text-surface-900 mb-3">
-                Rezerwacje w czasie rzeczywistym
-              </h3>
-              <p className="text-surface-600 text-sm leading-relaxed">
-                Asystentka na bieżąco sprawdza wolne terminy w grafiku, uwzględnia czas trwania konkretnej usługi oraz preferencje klienta, wpisując wizytę do kalendarza bez ryzyka nałożenia się rezerwacji.
-              </p>
-            </div>
-
-            {/* FILAR 3 */}
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-surface-200/80 shadow-card-soft hover:shadow-card-hover transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-600 mb-6 group-hover:scale-110 transition-transform">
-                <Sparkles size={28} />
-              </div>
-              <h3 className="font-playfair text-xl font-bold text-surface-900 mb-3">
-                Baza Wiedzy AI ze zdjęć i plików PDF
-              </h3>
-              <p className="text-surface-600 text-sm leading-relaxed">
-                Wystarczy wgrać zdjęcia ulotek, cennik PDF czy opis procedur. EVA uczy się specyfiki Twojego biznesu i odpowiada na pytania o cennik, przeciwwskazania czy dojazd równie profesjonalnie jak doświadczony pracownik.
-              </p>
-            </div>
-
-            {/* FILAR 4: JĘZYKI */}
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-surface-200/80 shadow-card-soft hover:shadow-card-hover transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-600 mb-6 group-hover:scale-110 transition-transform">
-                <Globe size={28} />
-              </div>
-              <h3 className="font-playfair text-xl font-bold text-surface-900 mb-3">
-                Obsługa ponad 140 języków
-              </h3>
-              <p className="text-surface-600 text-sm leading-relaxed">
-                Twój klient mówi po angielsku, ukraińsku, niemiecku czy hiszpańsku? EVA automatycznie rozpoznaje język dzwoniącego i prowadzi płynną konwersację w jego ojczystym języku bez żadnych barier.
-              </p>
-            </div>
-
-            {/* FILAR 5: GŁOSY */}
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-surface-200/80 shadow-card-soft hover:shadow-card-hover transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-600 mb-6 group-hover:scale-110 transition-transform">
-                <Mic size={28} />
-              </div>
-              <h3 className="font-playfair text-xl font-bold text-surface-900 mb-3">
-                4 naturalne głosy AI (2 żeńskie i 2 męskie)
-              </h3>
-              <p className="text-surface-600 text-sm leading-relaxed">
-                Dopasuj barwę, tempo i styl asystenta do wizerunku Twojej marki – od ciepłego, kojącego tonu recepcji beauty i medycyny, po pewny i precyzyjny głos serwisu technicznego lub kancelarii. Pełna personalizacja dostępna w każdym pakiecie.
-              </p>
-            </div>
-
-            {/* FILAR 6: PAKIET OSOBISTY (EXECUTIVE) */}
-            <div className="bg-gradient-to-br from-white to-gold-50/70 backdrop-blur-md rounded-3xl p-8 border border-gold-300 shadow-card-soft hover:shadow-card-hover transition-all group relative overflow-hidden">
-              <div className="w-14 h-14 rounded-2xl bg-gold-100 border border-gold-300 flex items-center justify-center text-gold-700 mb-6 group-hover:scale-110 transition-transform">
-                <Shield size={28} />
-              </div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gold-500 text-surface-900 uppercase tracking-wide">Nowość</span>
-                <span className="text-xs font-semibold text-gold-800 uppercase tracking-wider">Tryb Executive</span>
-              </div>
-              <h3 className="font-playfair text-xl font-bold text-surface-900 mb-3">
-                Tarcza Prywatności & Sekretarka Osobista
-              </h3>
-              <p className="text-surface-600 text-sm leading-relaxed">
-                Dla osób ceniących czas i dyskrecję: ochrona Deep Work, dwuetapowe powitanie filtrujące telemarketerów, natychmiastowe alerty VIP, kurtyna danych kodem PIN oraz poranny raport na telefon.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 6. DEDYKOWANA SEKCJA: AKTYWNY MARKETING I MAKSYMALIZACJA PRZYCHODÓW (PLAN PREMIUM) */}
       <section id="marketing" className="py-20 md:py-28 bg-gradient-to-b from-surface-900 to-surface-800 text-white relative overflow-hidden">
