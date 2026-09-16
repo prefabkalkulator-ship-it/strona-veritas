@@ -219,18 +219,18 @@ export default function EvaScrollytelling() {
       <div className="absolute inset-0 z-10 pointer-events-none flex flex-col justify-between">
         
         {/* ================= STAGE 1: GŁÓWNY HERO (0vh - 100vh) ================= */}
-        {/* Dostosowano padding góry (pt-24 / pt-28) oraz rozmiary przycisków, aby na mobile nic nie było ucinane */}
-        <div className="min-h-screen flex flex-col items-center justify-start sm:justify-center text-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 pb-6 relative">
+        {/* Podniesiono o ok. 50px na mobile (pt-11 zamiast pt-24), aby chipsy nie nachodziły na Filary */}
+        <div className="min-h-screen flex flex-col items-center justify-start sm:justify-center text-center px-4 sm:px-6 lg:px-8 pt-11 sm:pt-24 md:pt-32 pb-4 relative">
           <div className="max-w-4xl mx-auto flex flex-col items-center">
             
             {/* BADGE */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gold-100/90 border border-gold-300 text-gold-900 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2.5 sm:mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gold-100/90 border border-gold-300 text-gold-900 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2 sm:mb-4 shadow-sm">
               <Sparkles size={13} className="text-gold-600" />
               <span>Rewolucja w obsłudze klienta i kalendarzu</span>
             </div>
 
             {/* H1 PLAYFAIR DISPLAY */}
-            <h1 className="font-playfair text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-surface-900 leading-snug sm:leading-tight md:leading-[1.18] tracking-tight max-w-4xl mx-auto mb-2.5 sm:mb-4">
+            <h1 className="font-playfair text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-surface-900 leading-snug sm:leading-tight md:leading-[1.18] tracking-tight max-w-4xl mx-auto mb-2 sm:mb-4">
               Nigdy więcej nieodebranych telefonów i pustych okienek w kalendarzu.
               <span className="block mt-1 sm:mt-2 pb-1.5 text-gold-700 sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-r sm:from-gold-700 sm:via-gold-600 sm:to-gold-500">
                 Twój wirtualny pracownik AI odbiera i dba o grafik 24/7.
@@ -238,12 +238,12 @@ export default function EvaScrollytelling() {
             </h1>
 
             {/* PODTYTUŁ - CIEMNIEJSZY KOLOR CZCIONKI DLA WYŻSZEGO KONTRASTU (text-surface-800) */}
-            <p className="font-inter text-xs sm:text-base md:text-lg text-surface-800 font-medium max-w-2xl mx-auto mb-3.5 sm:mb-6 leading-relaxed">
+            <p className="font-inter text-xs sm:text-base md:text-lg text-surface-800 font-medium max-w-2xl mx-auto mb-2.5 sm:mb-5 leading-relaxed">
               EVA odbiera połączenia, gdy pracujesz z klientem, masz wolne lub prowadzisz samochód. Rozmawia w ponad 140 językach, odpowiada na pytania o cennik i natychmiast wpisuje rezerwację. W planie Premium sama dzwoni, by potwierdzić wizyty i zapełnia nagłe luki w grafiku.
             </p>
 
             {/* GŁÓWNE PRZYCISKI AKCJI - DOPASOWANE DLA MOBILE (NUMER W NOWYM WIERSZU, BRAK UCIĘĆ) */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 mb-3 sm:mb-6 w-full max-w-md sm:max-w-none">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-2.5 sm:mb-5 w-full max-w-md sm:max-w-none">
               <a
                 href="tel:+48343433088"
                 className="pointer-events-auto w-full sm:w-auto inline-flex flex-col items-center justify-center px-4 py-2 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold transition-all shadow-md hover:shadow-lg group"
@@ -291,7 +291,7 @@ export default function EvaScrollytelling() {
             </div>
 
             {/* WSKAŹNIK SCROLLA */}
-            <div className="mt-4 sm:mt-6 flex flex-col items-center gap-1 text-[11px] sm:text-xs text-surface-500 font-medium animate-pulse">
+            <div className="mt-2.5 sm:mt-5 flex flex-col items-center gap-1 text-[11px] sm:text-xs text-surface-500 font-medium animate-pulse">
               <span>Przewiń w dół, aby odkryć filary EVA</span>
               <ChevronDown size={16} className="text-gold-600 animate-bounce" />
             </div>
