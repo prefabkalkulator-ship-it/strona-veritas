@@ -12,8 +12,9 @@ import {
   ShieldCheck,
   Lock,
   Clock,
-  ExternalLink,
-  Shield
+  Shield,
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,6 +33,67 @@ export default function EvaScrollytelling() {
   const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
   const currentFrameRef = useRef<number>(0);
   const [firstFrameLoaded, setFirstFrameLoaded] = useState(false);
+
+  // Stan dla natywnego widżetu Live Callback w 30 sekund
+  const [callbackPhone, setCallbackPhone] = useState('');
+  const [callbackLoading, setCallbackLoading] = useState(false);
+  const [callbackError, setCallbackError] = useState('');
+  const [callbackCountdown, setCallbackCountdown] = useState<number | null>(null);
+  const [callbackStatus, setCallbackStatus] = useState<string>('');
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    if (callbackCountdown !== null && callbackCountdown > 0) {
+      timer = setTimeout(() => {
+        setCallbackCountdown((prev) => (prev !== null && prev > 0 ? prev - 1 : 0));
+        if (callbackCountdown > 20) {
+          setCallbackStatus('Łączenie z cyfrową centralą...');
+        } else if (callbackCountdown > 10) {
+          setCallbackStatus('Asystentka EVA wybiera Twój numer...');
+        } else {
+          setCallbackStatus('Twój telefon za moment zadzwoni – odbierz połączenie!');
+        }
+      }, 1000);
+    } else if (callbackCountdown === 0) {
+      setCallbackStatus('Połączenie zainicjowane. Jeśli telefon nie zadzwonił, upewnij się, że podałeś prawidłowy numer.');
+    }
+    return () => clearTimeout(timer);
+  }, [callbackCountdown]);
+
+  const handleCallbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setCallbackError('');
+
+    const clean = callbackPhone.replace(/[\s\-()]/g, '');
+    if (!clean || clean.length < 9) {
+      setCallbackError('Podaj poprawny 9-cyfrowy numer telefonu.');
+      return;
+    }
+
+    setCallbackLoading(true);
+    try {
+      const res = await fetch('https://beautyvoice-bff.web.app/api/callback/request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phoneNumber: clean,
+          source: 'veritas_eva_scrollytelling'
+        })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Nie udało się zamówić szybkiego kontaktu.');
+      }
+
+      setCallbackCountdown(30);
+      setCallbackStatus('Inicjowanie bezpiecznego połączenia...');
+    } catch (err: any) {
+      setCallbackError(err.message || 'Wystąpił błąd podczas zamawiania połączenia.');
+    } finally {
+      setCallbackLoading(false);
+    }
+  };
 
   // Funkcja rysująca klatkę z zachowaniem proporcji i wyśrodkowaniem na czystym białym tle
   const drawFrame = (frameIndex: number) => {
@@ -437,13 +499,13 @@ export default function EvaScrollytelling() {
         </div>
 
         {/* ================= STAGE 4: WIDŻET LIVE CALLBACK W 30 SEKUND (300vh - 400vh) ================= */}
-        {/* Bezpośrednio osadzony widżet bez zbędnych okienek w okienku */}
-        <div id="widzet" className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-          <div className="pointer-events-auto max-w-lg w-full bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-8 border border-gold-300/80 shadow-2xl space-y-3.5 sm:space-y-4">
+        {/* Bezpośredni natywny komponent bez iframe i bez podwójnych pasków przewijania */}
+        <div id="widzet" className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="pointer-events-auto max-w-md sm:max-w-lg w-full bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-gold-300/80 shadow-2xl space-y-4">
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold-100 text-gold-900 text-xs font-bold uppercase tracking-wider shadow-sm">
               <Sparkles size={14} className="text-gold-600" />
-              <span>Test Na Żywo</span>
+              <span>Live Callback 30 sek.</span>
             </div>
 
             <h2 className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-surface-900 leading-tight">
@@ -451,46 +513,89 @@ export default function EvaScrollytelling() {
             </h2>
 
             <p className="text-surface-700 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
-              Wpisz swój numer telefonu poniżej – asystent EVA zadzwoni do Ciebie automatycznie w 30 sekund, aby zaprezentować możliwości rozmowy na żywo.
+              Wpisz swój numer telefonu – asystent EVA zadzwoni do Ciebie automatycznie w 30 sekund, aby zaprezentować możliwości rozmowy na żywo.
             </p>
 
-            {/* BEZPOŚREDNI IFRAME BEZ DODATKOWYCH OKIENEK W OKIENKU */}
-            <div className="w-full flex justify-center pt-1">
-              <iframe
-                src="https://beautyvoice-bff.web.app/widget/callback"
-                width="100%"
-                height="325"
-                frameBorder="0"
-                style={{
-                  borderRadius: '16px',
-                  width: '100%',
-                  maxWidth: '410px',
-                  border: '1px solid #e2e8f0',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.06)',
-                  display: 'block'
-                }}
-                title="Widżet Live Callback w 30 sekund"
-              />
-            </div>
+            {callbackError && (
+              <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-xs flex items-center justify-center gap-2 text-left">
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+                <span>{callbackError}</span>
+              </div>
+            )}
 
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-1 text-xs">
-              <a
-                href="tel:+48343433088"
-                className="inline-flex items-center gap-1.5 font-bold text-gold-700 hover:text-gold-800 transition-colors"
-              >
-                <PhoneCall size={14} />
-                <span>Lub zadzwoń: +48 343 433 088</span>
-              </a>
-              <a
-                href="https://beautyvoice-bff.web.app/widget/callback"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-surface-500 hover:text-gold-700 transition-colors"
-              >
-                <span>Otwórz w nowej karcie</span>
-                <ExternalLink size={12} />
-              </a>
-            </div>
+            {callbackCountdown === null ? (
+              <form onSubmit={handleCallbackSubmit} className="space-y-4 max-w-sm mx-auto w-full pt-1">
+                <div className="text-left">
+                  <label className="block text-[11px] font-bold text-surface-700 uppercase tracking-wider mb-1.5">
+                    Twój numer telefonu
+                  </label>
+                  <div className="relative">
+                    <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-surface-400 select-none">
+                      +48
+                    </div>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="np. 500 123 456"
+                      value={callbackPhone}
+                      onChange={(e) => setCallbackPhone(e.target.value)}
+                      className="w-full pl-12 pr-4 py-3 bg-surface-50 border border-surface-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-gold-500/20 focus:border-gold-500 transition"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={callbackLoading}
+                  className="w-full py-3.5 px-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white rounded-2xl text-sm font-bold shadow-lg shadow-gold-500/25 flex items-center justify-center gap-2 transition cursor-pointer active:scale-[0.99] disabled:opacity-50"
+                >
+                  {callbackLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Zamawianie połączenia...</span>
+                    </>
+                  ) : (
+                    <>
+                      <PhoneCall className="w-4 h-4" />
+                      <span>Zadzwoń do mnie teraz (30 sek.)</span>
+                    </>
+                  )}
+                </button>
+              </form>
+            ) : (
+              /* Ekran Odliczania na Żywo */
+              <div className="py-3 space-y-3.5 max-w-sm mx-auto w-full animate-in fade-in zoom-in-95 duration-200">
+                <div className="relative w-20 h-20 mx-auto flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full bg-gold-400/20 animate-ping" />
+                  <div className="absolute inset-2 rounded-full bg-gold-400/30 animate-pulse" />
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-gold-500 to-gold-600 text-white flex items-center justify-center shadow-lg shadow-gold-500/30 z-10">
+                    <span className="text-xl font-bold font-mono">{callbackCountdown}s</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-surface-900">
+                    Oddzwaniamy na Twój numer
+                  </h3>
+                  <p className="text-xs text-gold-800 font-semibold mt-1">
+                    {callbackStatus}
+                  </p>
+                </div>
+
+                <div className="p-2.5 bg-gold-50 border border-gold-200 rounded-2xl text-xs text-gold-900 flex items-center justify-center gap-2">
+                  <Clock className="w-4 h-4 text-gold-600 shrink-0" />
+                  <span>Trzymaj telefon w pogotowiu!</span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => { setCallbackCountdown(null); setCallbackPhone(''); }}
+                  className="text-xs text-surface-500 hover:text-gold-700 underline transition cursor-pointer pt-1"
+                >
+                  Zamów połączenie na inny numer
+                </button>
+              </div>
+            )}
 
             <p className="text-[11px] sm:text-xs text-gold-800 font-semibold bg-gold-50 border border-gold-200 py-1.5 px-3 rounded-xl inline-block">
               🎉 <strong>Program Wczesnych Testów:</strong> Pierwsze 5 firm otrzymuje miesiąc abonamentu całkowicie bezpłatnie!
