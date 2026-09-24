@@ -36,8 +36,8 @@ export default function EvaLanding() {
 
   const faqs = [
     {
-      q: "Czy asystentka EVA brzmi naturalnie jak prawdziwy człowiek?",
-      a: "Tak. EVA wykorzystuje najnowocześniejsze modele syntezy mowy i rozumienia języka naturalnego. Masz do wyboru 4 naturalne głosy AI (2 żeńskie i 2 męskie). Asystentka prowadzi płynny dialog, reaguje na wtrącenia, rozumie kontekst i nie brzmi jak monotonny automat."
+      q: "Czy asystentka EVA (aplikacja asystent Ewa) brzmi naturalnie jak prawdziwy człowiek?",
+      a: "Tak. EVA (Easy Voice Assistant, w Polsce wyszukiwana często jako aplikacja asystent Ewa) wykorzystuje najnowocześniejsze modele syntezy mowy i rozumienia języka naturalnego. Masz do wyboru 4 naturalne głosy AI (2 żeńskie i 2 męskie). Asystentka prowadzi płynny dialog, reaguje na wtrącenia, rozumie kontekst i nie brzmi jak monotonny automat."
     },
     {
       q: "W ilu językach potrafi rozmawiać EVA z dzwoniącymi klientami?",
@@ -76,18 +76,27 @@ export default function EvaLanding() {
   return (
     <div className="min-h-screen bg-surface-50 text-surface-900 font-inter selection:bg-gold-500 selection:text-white antialiased">
       <Helmet>
-        <title>EVA - Asystent Głosowy AI | Odbieranie Telefonów i Rezerwacje 24/7</title>
+        <title>aplikacja asystent Ewa – Easy Voice Assistant</title>
         <meta
           name="description"
-          content="Inteligentny asystent głosowy AI dla salonów, gabinetów i firm usługowych. Odbiera telefony 24/7 w ponad 140 językach, wpisuje rezerwacje i aktywnie dba o grafik."
+          content="Aplikacja asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI dla firm. Odbiera telefony 24/7, wpisuje rezerwacje i dba o Twój grafik."
         />
-        <meta property="og:title" content="EVA - Asystent Głosowy AI dla Twojego Biznesu" />
+        <link rel="canonical" href="https://veritas-app.com/eva" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://veritas-app.com/eva" />
+        <meta property="og:title" content="aplikacja asystent Ewa – Easy Voice Assistant" />
         <meta
           property="og:description"
-          content="Nigdy więcej nieodebranych telefonów i pustych okienek w kalendarzu. Ponad 140 języków i 4 naturalne głosy AI. Przetestuj na żywo pod numerem +48 343 433 088!"
+          content="Aplikacja asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI dla Twojego biznesu. Przetestuj na żywo pod numerem +48 343 433 088!"
         />
-        <meta property="og:type" content="website" />
         <meta property="og:image" content="/eva-headset-gold.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="aplikacja asystent Ewa – Easy Voice Assistant" />
+        <meta
+          name="twitter:description"
+          content="Aplikacja asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI odbierający telefony 24/7."
+        />
+        <meta name="twitter:image" content="/eva-headset-gold.png" />
         <link rel="icon" type="image/png" href="/eva-headset-gold.png" />
       </Helmet>
 

@@ -301,7 +301,7 @@ export default function EvaScrollytelling() {
 
             {/* PODTYTUŁ - CIEMNIEJSZY KOLOR CZCIONKI DLA WYŻSZEGO KONTRASTU (text-surface-800) */}
             <p className="font-inter text-xs sm:text-base md:text-lg text-surface-800 font-medium max-w-2xl mx-auto mb-2.5 sm:mb-5 leading-relaxed">
-              EVA odbiera połączenia, gdy pracujesz z klientem, masz wolne lub prowadzisz samochód. Rozmawia w ponad 140 językach, odpowiada na pytania o cennik i natychmiast wpisuje rezerwację. W planie Premium sama dzwoni, by potwierdzić wizyty i zapełnia nagłe luki w grafiku.
+              Aplikacja asystent Ewa (Easy Voice Assistant / EVA) odbiera połączenia, gdy pracujesz z klientem, masz wolne lub prowadzisz samochód. Rozmawia w ponad 140 językach, odpowiada na pytania o cennik i natychmiast wpisuje rezerwację. W planie Premium sama dzwoni, by potwierdzić wizyty i zapełnia nagłe luki w grafiku.
             </p>
 
             {/* GŁÓWNE PRZYCISKI AKCJI - DOPASOWANE DLA MOBILE (NUMER W NOWYM WIERSZU, BRAK UCIĘĆ) */}
