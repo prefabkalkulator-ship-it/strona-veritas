@@ -187,8 +187,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                             </div>
 
                             {/* Wide EVA tile mobile */}
-                            <button
-                                onClick={() => navigate('/eva')}
+                            <Link
+                                to="/eva"
                                 className="w-full p-3 rounded-xl bg-gradient-to-r from-[#171b2b] via-[#241f17] to-[#171b2b] border border-[#ca8a3e]/60 hover:border-[#ca8a3e] hover:shadow-[0_0_15px_rgba(202,138,62,0.3)] flex items-center justify-between transition-all group cursor-pointer"
                             >
                                 <div className="flex items-center gap-2.5">
@@ -204,7 +204,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                                     </div>
                                 </div>
                                 <ArrowRight size={16} className="text-[#ca8a3e] shrink-0" />
-                            </button>
+                            </Link>
                         </div>
                     </div>
 
@@ -262,8 +262,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                             </div>
 
                             {/* Wide EVA tile desktop */}
-                            <button
-                                onClick={() => navigate('/eva')}
+                            <Link
+                                to="/eva"
                                 className="w-full mt-2.5 p-3 rounded-xl bg-gradient-to-r from-[#171b2b] via-[#241f17] to-[#171b2b] border border-[#ca8a3e]/60 hover:border-[#ca8a3e] hover:shadow-[0_0_20px_rgba(202,138,62,0.3)] flex items-center justify-between transition-all group cursor-pointer"
                             >
                                 <div className="flex items-center gap-3">
@@ -281,7 +281,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({ onTrigger }) => {
                                 <div className="text-[#ca8a3e] group-hover:translate-x-1 transition-transform ml-2 shrink-0">
                                     <ArrowRight size={16} />
                                 </div>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

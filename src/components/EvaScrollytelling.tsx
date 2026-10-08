@@ -323,7 +323,7 @@ export default function EvaScrollytelling() {
               </a>
 
               <a
-                href="https://beautyvoice-bff.web.app/register"
+                href="https://asystent-ewa.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-xs sm:text-base transition-all shadow-sm hover:shadow-md"

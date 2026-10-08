@@ -76,28 +76,51 @@ export default function EvaLanding() {
   return (
     <div className="min-h-screen bg-surface-50 text-surface-900 font-inter selection:bg-gold-500 selection:text-white antialiased">
       <Helmet>
-        <title>aplikacja asystent Ewa – Easy Voice Assistant</title>
+        <title>Asystent Głosowy Ewa – Wirtualna Recepcja AI 24/7 | Veritas</title>
         <meta
           name="description"
-          content="Aplikacja asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI dla firm. Odbiera telefony 24/7, wpisuje rezerwacje i dba o Twój grafik."
+          content="Aplikacja asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI dla firm. Odbiera telefony 24/7, wpisuje rezerwacje i dba o Twój grafik. Oficjalna aplikacja: asystent-ewa.web.app."
         />
         <link rel="canonical" href="https://veritas-app.com/eva" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://veritas-app.com/eva" />
-        <meta property="og:title" content="aplikacja asystent Ewa – Easy Voice Assistant" />
+        <meta property="og:title" content="Asystent Głosowy Ewa – Wirtualna Recepcja AI 24/7 | Veritas" />
         <meta
           property="og:description"
           content="Aplikacja asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI dla Twojego biznesu. Przetestuj na żywo pod numerem +48 343 433 088!"
         />
         <meta property="og:image" content="/eva-headset-gold.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="aplikacja asystent Ewa – Easy Voice Assistant" />
+        <meta name="twitter:title" content="Asystent Głosowy Ewa – Wirtualna Recepcja AI 24/7 | Veritas" />
         <meta
           name="twitter:description"
           content="Aplikacja asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI odbierający telefony 24/7."
         />
         <meta name="twitter:image" content="/eva-headset-gold.png" />
         <link rel="icon" type="image/png" href="/eva-headset-gold.png" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Asystent Głosowy Ewa",
+            "alternateName": ["EVA", "Easy Voice Assistant", "Aplikacja asystent Ewa", "Asystent Ewa"],
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "All",
+            "url": "https://asystent-ewa.web.app/",
+            "installUrl": "https://asystent-ewa.web.app/",
+            "author": {
+              "@type": "Organization",
+              "name": "Veritas",
+              "url": "https://veritas-app.com"
+            },
+            "description": "Inteligentny asystent głosowy AI dla salonów, gabinetów i profesjonalistów. Odbiera telefony 24/7, rezerwuje wizyty i filtruje połączenia.",
+            "offers": {
+              "@type": "Offer",
+              "price": "149",
+              "priceCurrency": "PLN"
+            }
+          })}
+        </script>
       </Helmet>
 
       {/* 1. TOP ANNOUNCEMENT BAR */}
@@ -219,7 +242,7 @@ export default function EvaLanding() {
             </a>
 
             <a
-              href="https://beautyvoice-bff.web.app/register"
+              href="https://asystent-ewa.web.app/register"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-surface-900 hover:bg-surface-800 text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md whitespace-nowrap"
@@ -615,7 +638,7 @@ export default function EvaLanding() {
               </div>
 
               <a
-                href="https://beautyvoice-bff.web.app/register"
+                href="https://asystent-ewa.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
@@ -682,7 +705,7 @@ export default function EvaLanding() {
               </div>
 
               <a
-                href="https://beautyvoice-bff.web.app/register"
+                href="https://asystent-ewa.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-sm transition-all shadow-md hover:shadow-lg hover:scale-[1.01]"
@@ -751,7 +774,7 @@ export default function EvaLanding() {
               </div>
 
               <a
-                href="https://beautyvoice-bff.web.app/register"
+                href="https://asystent-ewa.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-surface-900 hover:bg-surface-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
@@ -819,7 +842,7 @@ export default function EvaLanding() {
               </div>
 
               <a
-                href="https://beautyvoice-bff.web.app/register"
+                href="https://asystent-ewa.web.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-bold text-sm transition-all shadow-lg hover:shadow-xl hover:scale-[1.01]"
@@ -915,7 +938,18 @@ export default function EvaLanding() {
               <ul className="space-y-2.5 text-sm">
                 <li>
                   <a
-                    href="https://beautyvoice-bff.web.app/register"
+                    href="https://asystent-ewa.web.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold-400 text-gold-300 font-semibold transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Aplikacja: asystent-ewa.web.app</span>
+                    <ExternalLink size={12} className="opacity-80" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://asystent-ewa.web.app/register"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-gold-400 transition-colors flex items-center gap-1.5"

@@ -101,7 +101,7 @@ export default function EvaTerms() {
               <span>Infolinia DEMO: +48 343 433 088</span>
             </a>
             <a
-              href="https://beautyvoice-bff.web.app/register"
+              href="https://asystent-ewa.web.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-surface-900 hover:bg-surface-800 text-white text-xs font-semibold transition-all shadow-sm"
