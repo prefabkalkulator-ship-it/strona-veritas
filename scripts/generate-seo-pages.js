@@ -1,0 +1,175 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const distDir = path.resolve(__dirname, '../dist');
+
+const indexHtmlPath = path.join(distDir, 'index.html');
+
+if (!fs.existsSync(indexHtmlPath)) {
+  console.error('Error: dist/index.html not found. Run vite build first.');
+  process.exit(1);
+}
+
+let templateHtml = fs.readFileSync(indexHtmlPath, 'utf8');
+
+// --- GENERATE /eva/index.html ---
+const evaDir = path.join(distDir, 'eva');
+if (!fs.existsSync(evaDir)) {
+  fs.mkdirSync(evaDir, { recursive: true });
+}
+
+let evaHtml = templateHtml;
+
+// 1. Title
+evaHtml = evaHtml.replace(
+  /<title>.*?<\/title>/i,
+  '<title>Asystent Głosowy Ewa – Wirtualna Recepcja AI 24/7 | Veritas</title>'
+);
+
+// 2. Canonical
+evaHtml = evaHtml.replace(
+  /<link rel="canonical" href=".*?" \/>/i,
+  '<link rel="canonical" href="https://veritas-app.com/eva" />'
+);
+
+// 3. Description & Keywords
+evaHtml = evaHtml.replace(
+  /<meta\s+name="description"\s+content=".*?"\s*\/>/is,
+  '<meta name="description" content="Aplikacja Asystent Ewa (Easy Voice Assistant / EVA) – wirtualna recepcjonistka i osobisty asystent AI dla firm. Automatyczne odbieranie telefonów 24/7, rezerwacja wizyt w kalendarzu. Przetestuj na żywo pod numerem +48 343 433 088!" />'
+);
+
+evaHtml = evaHtml.replace(
+  /<meta name="keywords" content=".*?" \/>/i,
+  '<meta name="keywords" content="asystent głosowy ewa, aplikacja asystent ewa, asystent ewa, wirtualna recepcjonistka, easy voice assistant, wirtualna recepcja ai, centrala ai, automatyczne odbieranie telefonów" />'
+);
+
+// 4. Open Graph
+evaHtml = evaHtml.replace(
+  /<meta property="og:url" content=".*?" \/>/i,
+  '<meta property="og:url" content="https://veritas-app.com/eva" />'
+);
+evaHtml = evaHtml.replace(
+  /<meta property="og:title" content=".*?" \/>/i,
+  '<meta property="og:title" content="Asystent Głosowy Ewa – Wirtualna Recepcja AI 24/7 | Veritas" />'
+);
+evaHtml = evaHtml.replace(
+  /<meta\s+property="og:description"\s+content=".*?"\s*\/>/is,
+  '<meta property="og:description" content="Aplikacja Asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI odbierający telefony 24/7 i rezerwujący wizyty." />'
+);
+
+// 5. Twitter Card
+evaHtml = evaHtml.replace(
+  /<meta name="twitter:title" content=".*?" \/>/i,
+  '<meta name="twitter:title" content="Asystent Głosowy Ewa – Wirtualna Recepcja AI 24/7 | Veritas" />'
+);
+evaHtml = evaHtml.replace(
+  /<meta\s+name="twitter:description"\s+content=".*?"\s*\/>/is,
+  '<meta name="twitter:description" content="Aplikacja Asystent Ewa (Easy Voice Assistant / EVA) – inteligentny asystent głosowy AI odbierający telefony 24/7 i rezerwujący wizyty." />'
+);
+
+// 6. Schema.org JSON-LD for SoftwareApplication
+const schemaJsonLd = `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Asystent Głosowy Ewa",
+    "alternateName": ["EVA", "Easy Voice Assistant", "Aplikacja asystent Ewa", "Asystent Ewa", "Asystent Głosowy EVA"],
+    "applicationCategory": "BusinessApplication, LifestyleApplication",
+    "operatingSystem": "All",
+    "url": "https://veritas-app.com/eva",
+    "installUrl": "https://ewa.veritas-app.com/",
+    "author": {
+      "@type": "Organization",
+      "name": "Veritas",
+      "url": "https://veritas-app.com"
+    },
+    "description": "Aplikacja Asystent Ewa (EVA) – inteligentny asystent głosowy AI dla firm i profesjonalistów. Odbiera telefony 24/7, rezerwuje wizyty i filtruje połączenia.",
+    "softwareVersion": "2.4",
+    "offers": {
+      "@type": "Offer",
+      "price": "149",
+      "priceCurrency": "PLN"
+    }
+  }
+  </script>
+`;
+
+evaHtml = evaHtml.replace('</head>', `${schemaJsonLd}\n</head>`);
+
+// 7. Full Semantic Crawler HTML inside #root
+const evaCrawlableContent = `
+  <div id="root">
+    <main style="max-width:960px;margin:0 auto;padding:40px 20px;font-family:system-ui,-apple-system,sans-serif;color:#0f172a;line-height:1.6;">
+      <article>
+        <header style="margin-bottom:32px;">
+          <p style="font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;color:#d97706;font-weight:700;margin-bottom:8px;">Oficjalna Strona Rozwiązania AI</p>
+          <h1 style="font-size:2.4rem;font-weight:800;color:#0f172a;line-height:1.2;margin-bottom:16px;">Asystent Głosowy Ewa (EVA) – Inteligentna Wirtualna Recepcja AI 24/7</h1>
+          <p style="font-size:1.2rem;color:#334155;line-height:1.6;">
+            <strong>Aplikacja Asystent Ewa</strong> (Easy Voice Assistant) to wiodący polski system głosowej sztucznej inteligencji, który automatycznie odbiera połączenia telefoniczne, selekcjonuje klientów, umawia spotkania w kalendarzu i chroni Twój czas 24 godziny na dobę, 7 dni w tygodniu.
+          </p>
+          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="https://ewa.veritas-app.com/register" style="display:inline-block;padding:12px 24px;background:#0f172a;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">Wypróbuj Asystenta Ewa (Darmowy Test) →</a>
+            <a href="https://ewa.veritas-app.com/login" style="display:inline-block;padding:12px 24px;background:#e2e8f0;color:#0f172a;text-decoration:none;border-radius:8px;font-weight:600;">Zaloguj się do Panelu Aplikacji</a>
+          </div>
+        </header>
+
+        <section style="margin-top:40px;padding:24px;background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0;">
+          <h2 style="font-size:1.5rem;font-weight:700;color:#0f172a;margin-bottom:12px;">Test na żywo przez telefon</h2>
+          <p style="color:#334155;">Sprawdź, jak płynnie rozmawia Ewa. Zadzwoń pod bezpłatny numer demonstracyjny: <strong><a href="tel:+48343433088" style="color:#2563eb;font-weight:700;">+48 343 433 088</a></strong>.</p>
+        </section>
+
+        <section style="margin-top:40px;">
+          <h2 style="font-size:1.8rem;font-weight:700;color:#0f172a;margin-bottom:20px;">Dostępne Pakiety Aplikacji Asystent Ewa</h2>
+          
+          <div style="margin-bottom:24px;padding:20px;border:1px solid #cbd5e1;border-radius:8px;">
+            <h3 style="font-size:1.3rem;font-weight:700;color:#0f172a;margin-bottom:8px;">Pakiet Osobisty AI (Executive) – Dyskretny Sekretarz dla Profesjonalistów</h3>
+            <p style="color:#475569;">Stworzony dla przedsiębiorców, menedżerów, architektów, lekarzy, prawników i fachowców. Ewa działa jak osobisty bufor przed trudnymi telefonami i niechcianym spamem. Filtruje natrętów, wpuszcza kontakty VIP, wysyła podsumowania rozmów na e-mail i powiadomienia push, a Twój prywatny kalendarz pozostaje w 100% niewidoczny dla dzwoniących.</p>
+          </div>
+
+          <div style="margin-bottom:24px;padding:20px;border:1px solid #cbd5e1;border-radius:8px;">
+            <h3 style="font-size:1.3rem;font-weight:700;color:#0f172a;margin-bottom:8px;">Pakiety Firmowe B2B (Standard & Premium) – Wirtualna Recepcjonistka dla Firm</h3>
+            <p style="color:#475569;">Dedykowany dla salonów beauty, gabinetów medycznych, gastronomii oraz firm usługowych. Zapewnia 100% odebranych połączeń, zapisuje wizyty i konsultacje w Twoim terminarzu, wysyła klientom automatyczne SMS-y z potwierdzeniem terminu i dojazdem oraz obsługuje do 5 dzwoniących jednocześnie.</p>
+          </div>
+        </section>
+
+        <section style="margin-top:48px;">
+          <h2 style="font-size:1.8rem;font-weight:700;color:#0f172a;margin-bottom:24px;">Najczęściej Zadawane Pytania (FAQ)</h2>
+          
+          <div style="margin-bottom:16px;">
+            <h3 style="font-size:1.2rem;font-weight:600;color:#0f172a;margin-bottom:6px;">Czy asystentka EVA (aplikacja asystent Ewa) brzmi naturalnie jak prawdziwy człowiek?</h3>
+            <p style="color:#475569;">Tak. EVA wykorzystuje najnowocześniejsze modele syntezy mowy i rozumienia języka naturalnego. Prowadzi płynny dialog, reaguje na wtrącenia, rozumie kontekst i nie brzmi jak monotonny automat.</p>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <h3 style="font-size:1.2rem;font-weight:600;color:#0f172a;margin-bottom:6px;">W ilu językach potrafi rozmawiać EVA z dzwoniącymi klientami?</h3>
+            <p style="color:#475569;">EVA obsługuje ponad 140 języków z automatycznym rozpoznawaniem mowy. Jeżeli dzwoniący klient zacznie rozmowę po angielsku, ukraińsku, niemiecku czy hiszpańsku, EVA natychmiast płynnie odpowie w jego języku ojczystym.</p>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <h3 style="font-size:1.2rem;font-weight:600;color:#0f172a;margin-bottom:6px;">Jak w 10 minut przekierować połączenia z mojego smartfona?</h3>
+            <p style="color:#475569;">Wystarczy wpisać na klawiaturze telefonu prosty kod operatora GSM (np. *21*numer_techniczny# dla przekierowania wszystkich połączeń lub *67*... gdy linia jest zajęta). Jest to szybkie i w pełni odwracalne w każdej chwili.</p>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <h3 style="font-size:1.2rem;font-weight:600;color:#0f172a;margin-bottom:6px;">Jak wygląda kwestia RODO i bezpieczeństwa danych klientów?</h3>
+            <p style="color:#475569;">Platforma spełnia rygorystyczne normy bezpieczeństwa (szyfrowanie TLS 1.3 i AES-256). W ramach regulaminu automatycznie zawierana jest Umowa Powierzenia Przetwarzania Danych Osobowych (DPA), zabezpieczająca Twoją firmę od strony prawnej.</p>
+          </div>
+        </section>
+
+        <footer style="margin-top:60px;padding-top:24px;border-top:1px solid #e2e8f0;font-size:0.9rem;color:#64748b;">
+          <p>© 2026 Veritas. Wszelkie prawa zastrzeżone. Dostęp do oficjalnej aplikacji webowej: <a href="https://ewa.veritas-app.com/" style="color:#2563eb;">ewa.veritas-app.com</a>.</p>
+        </footer>
+      </article>
+    </main>
+  </div>
+`;
+
+// Replace root content
+evaHtml = evaHtml.replace(/<div id="root">.*?<\/div>/is, evaCrawlableContent.trim());
+
+fs.writeFileSync(path.join(evaDir, 'index.html'), evaHtml, 'utf8');
+console.log('Successfully generated dist/eva/index.html for SEO pre-rendering!');
